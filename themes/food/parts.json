@@ -206,7 +206,7 @@
    "earthy"
   ],
   "attributes": {
-   "prepMinutes": 25
+   "prepMinutes": 20
   },
   "visual": {
    "glyph": "peas",
@@ -285,7 +285,7 @@
    "umami"
   ],
   "attributes": {
-   "prepMinutes": 10
+   "prepMinutes": 5
   },
   "visual": {
    "glyph": "cubes",
@@ -403,13 +403,32 @@
    "sweet"
   ],
   "attributes": {
-   "prepMinutes": 30
+   "prepMinutes": 25
   },
   "visual": {
    "glyph": "slices",
    "colors": [
     "#8E2C48",
     "#C2577A"
+   ]
+  }
+ },
+ {
+  "id": "main_zucchini",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "summer",
+   "smoky"
+  ],
+  "attributes": {
+   "prepMinutes": 10
+  },
+  "visual": {
+   "glyph": "slices",
+   "colors": [
+    "#7FA34A",
+    "#E6EFC0"
    ]
   }
  },
@@ -472,7 +491,7 @@
    "sweet"
   ],
   "attributes": {
-   "prepMinutes": 25
+   "prepMinutes": 20
   },
   "visual": {
    "glyph": "sticks",
@@ -815,7 +834,7 @@
    "herb"
   ],
   "attributes": {
-   "prepMinutes": 1
+   "prepMinutes": 0
   },
   "visual": {
    "glyph": "herbs",
@@ -833,7 +852,7 @@
    "citrus"
   ],
   "attributes": {
-   "prepMinutes": 2
+   "prepMinutes": 0
   },
   "visual": {
    "glyph": "zest",
@@ -851,7 +870,7 @@
    "nutty"
   ],
   "attributes": {
-   "prepMinutes": 3
+   "prepMinutes": 2
   },
   "visual": {
    "glyph": "sprinkle",
@@ -871,7 +890,7 @@
    "sweet"
   ],
   "attributes": {
-   "prepMinutes": 3
+   "prepMinutes": 2
   },
   "visual": {
    "glyph": "sprinkle",
@@ -890,7 +909,7 @@
    "spicy"
   ],
   "attributes": {
-   "prepMinutes": 1
+   "prepMinutes": 0
   },
   "visual": {
    "glyph": "sprinkle",
@@ -909,7 +928,7 @@
    "fresh"
   ],
   "attributes": {
-   "prepMinutes": 1
+   "prepMinutes": 0
   },
   "visual": {
    "glyph": "herbs",
@@ -927,7 +946,7 @@
    "smoky"
   ],
   "attributes": {
-   "prepMinutes": 10
+   "prepMinutes": 5
   },
   "visual": {
    "glyph": "crispy",
@@ -945,7 +964,7 @@
    "fresh"
   ],
   "attributes": {
-   "prepMinutes": 2
+   "prepMinutes": 0
   },
   "visual": {
    "glyph": "flowers",
@@ -965,13 +984,31 @@
    "nutty"
   ],
   "attributes": {
-   "prepMinutes": 5
+   "prepMinutes": 3
   },
   "visual": {
    "glyph": "sprinkle",
    "colors": [
     "#A06A3A",
     "#D9A86C"
+   ]
+  }
+ },
+ {
+  "id": "garnish_horseradish",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "winter",
+   "spicy"
+  ],
+  "attributes": {
+   "prepMinutes": 1
+  },
+  "visual": {
+   "glyph": "zest",
+   "colors": [
+    "#F4F1E6"
    ]
   }
  }

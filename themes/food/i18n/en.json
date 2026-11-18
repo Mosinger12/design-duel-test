@@ -101,7 +101,7 @@
   "brief.coastal_spring.title": "Coastal spring",
   "brief.coastal_spring.desc": "A spring menu by the sea. Fish is welcome, meat is not. 40 minutes max.",
   "brief.cozy_vegan_winter.title": "Cozy vegan winter",
-  "brief.cozy_vegan_winter.desc": "A hearty plant-based plate for a snowy evening. Winter produce, max. 60 minutes.",
+  "brief.cozy_vegan_winter.desc": "A hearty plant-based plate for a snowy evening. Winter produce, max. 70 minutes.",
   "brief.student_budget.title": "Fifteen-minute vegan",
   "brief.student_budget.desc": "Fully plant-based and done in 15 minutes – with one flavour pair that makes it special.",
   "brief.partner_showcase.title": "Partner summer challenge",
@@ -120,5 +120,7 @@
   "rule.time.bad": "{total} min – far over the {max}-minute budget.",
   "rule.pairs.good": "Flavour pairs: {count} (e.g. {a} + {b}).",
   "rule.pairs.ok": "Only {count} of {min} flavour pairs (e.g. {a} + {b}) – add another contrast.",
-  "rule.pairs.bad": "No flavour pair yet – try e.g. citrus + herbs or sweet + spicy."
+  "rule.pairs.bad": "No flavour pair yet – try e.g. citrus + herbs or sweet + spicy.",
+  "part.main_zucchini": "Grilled zucchini",
+  "part.garnish_horseradish": "Fresh horseradish"
 }

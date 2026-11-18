@@ -237,7 +237,7 @@
    {
     "rule": "time",
     "params": {
-     "max": 60
+     "max": 70
     }
    },
    {

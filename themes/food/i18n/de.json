@@ -101,7 +101,7 @@
   "brief.coastal_spring.title": "Frühling an der Küste",
   "brief.coastal_spring.desc": "Ein Frühlingsmenü am Meer. Fisch ist willkommen, Fleisch nicht. Max. 40 Minuten.",
   "brief.cozy_vegan_winter.title": "Gemütlich vegan im Winter",
-  "brief.cozy_vegan_winter.desc": "Ein herzhafter pflanzlicher Teller für einen verschneiten Abend. Winterzutaten, max. 60 Minuten.",
+  "brief.cozy_vegan_winter.desc": "Ein herzhafter pflanzlicher Teller für einen verschneiten Abend. Winterzutaten, max. 70 Minuten.",
   "brief.student_budget.title": "Vegan in fünfzehn Minuten",
   "brief.student_budget.desc": "Rein pflanzlich und in 15 Minuten fertig – mit einem Aromen-Paar, das es besonders macht.",
   "brief.partner_showcase.title": "Partner-Sommer-Challenge",
@@ -120,5 +120,7 @@
   "rule.time.bad": "{total} Min. – weit über dem Zeitbudget von {max} Minuten.",
   "rule.pairs.good": "Aromen-Paare: {count} (z. B. {a} + {b}).",
   "rule.pairs.ok": "Nur {count} von {min} Aromen-Paaren (z. B. {a} + {b}) – ergänze einen weiteren Kontrast.",
-  "rule.pairs.bad": "Noch kein Aromen-Paar – probiere z. B. Zitrus + Kräuter oder süß + scharf."
+  "rule.pairs.bad": "Noch kein Aromen-Paar – probiere z. B. Zitrus + Kräuter oder süß + scharf.",
+  "part.main_zucchini": "Gegrillte Zucchini",
+  "part.garnish_horseradish": "Frischer Meerrettich"
 }
