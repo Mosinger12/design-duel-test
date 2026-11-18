@@ -39,3 +39,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Lizenz-Prüfung der Bundles
+.bundle-check/

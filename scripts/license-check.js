@@ -7,9 +7,8 @@
  * SPDX-Ausdrücke: "A OR B" ist ok, wenn mindestens eine Seite erlaubt ist;
  * "A AND B" ist ok, wenn alle Seiten erlaubt sind.
  *
- * Ausnahmen: nur über license-exceptions.json (Paketname + exakte Lizenz +
- * Begründung). Jede Ausnahme wird bei jedem Lauf sichtbar ausgegeben.
- * Mit --strict werden Ausnahmen ignoriert (zeigt den Rohzustand).
+ * Es gibt KEINE Ausnahmen. (Ob Build-/Test-Werkzeuge ausgenommen werden dürfen,
+ * ist eine offene Entscheidung des Projektinhabers, siehe PROJEKT.md, Offene Punkte.)
  *
  * Exit-Code 1 bei jedem nicht erlaubten, fehlenden oder unlesbaren Eintrag.
  */
@@ -18,7 +17,6 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const ALLOWED = new Set(['MIT', 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'ISC', '0BSD']);
-const STRICT = process.argv.includes('--strict');
 const JSON_OUT = process.argv.includes('--json');
 
 function normalizeLicense(pkg) {
@@ -93,44 +91,31 @@ function collectPackages() {
   return [...found.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function loadExceptions() {
-  const file = path.join(ROOT, 'license-exceptions.json');
-  if (!fs.existsSync(file)) return [];
-  return JSON.parse(fs.readFileSync(file, 'utf8')).exceptions || [];
-}
-
 function main() {
   if (!fs.existsSync(path.join(ROOT, 'node_modules'))) {
     console.error('FEHLER: node_modules fehlt. Bitte zuerst "npm install" ausführen.');
     process.exit(1);
   }
   const pkgs = collectPackages();
-  const exceptions = STRICT ? [] : loadExceptions();
-  const ok = [], excepted = [], bad = [];
+  const ok = [], bad = [];
   for (const p of pkgs) {
-    if (p.license && isAllowed(p.license)) { ok.push(p); continue; }
-    const ex = exceptions.find((e) => e.package === p.name && e.license === p.license);
-    if (ex) excepted.push({ ...p, reason: ex.reason });
+    if (p.license && isAllowed(p.license)) ok.push(p);
     else bad.push(p);
   }
   if (JSON_OUT) {
-    console.log(JSON.stringify({ ok, excepted, bad }, null, 2));
+    console.log(JSON.stringify({ ok, bad }, null, 2));
     process.exit(bad.length ? 1 : 0);
   }
   const counts = {};
   for (const p of ok) counts[p.license] = (counts[p.license] || 0) + 1;
   console.log(`Geprüfte Pakete: ${pkgs.length}`);
   console.log('Erlaubte Lizenzen:', Object.entries(counts).map(([k, v]) => `${k}: ${v}`).join(', '));
-  if (excepted.length) {
-    console.log(`\nDokumentierte Ausnahmen (license-exceptions.json): ${excepted.length}`);
-    for (const p of excepted) console.log(`  ~ ${p.name}@${p.version} [${p.license}] – ${p.reason}`);
-  }
   if (bad.length) {
     console.error(`\nFEHLER: ${bad.length} Paket(e) mit nicht erlaubter oder fehlender Lizenz:`);
     for (const p of bad) console.error(`  x ${p.name}@${p.version} [${p.license || 'KEINE ANGABE'}] (${p.dirs[0]})`);
     process.exit(1);
   }
-  console.log('\nOK: alle Lizenzen erlaubt' + (excepted.length ? ' (mit dokumentierten Ausnahmen, siehe oben).' : '.'));
+  console.log('\nOK: alle Lizenzen erlaubt.');
 }
 
 if (require.main === module) main();
