@@ -17,7 +17,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const ALLOWED = new Set(['MIT', 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'ISC', '0BSD']);
-const JSON_OUT = process.argv.includes('--json');
+const JSON_OUT = process.argv.includes('--json'); // --list: Markdown-Tabelle aller Pakete
 
 function normalizeLicense(pkg) {
   let lic = pkg.license;
@@ -104,7 +104,13 @@ function main() {
   }
   if (JSON_OUT) {
     console.log(JSON.stringify({ ok, bad }, null, 2));
-    process.exit(bad.length ? 1 : 0);
+    process.exitCode = bad.length ? 1 : 0; // exitCode statt exit(): große Ausgabe wird vollständig geschrieben
+    return;
+  }
+  if (process.argv.includes('--list')) {
+    for (const p of pkgs) console.log(`| ${p.name} | ${p.version} | ${p.license || 'KEINE ANGABE'} | ${isAllowed(p.license) ? 'ja' : 'NEIN'} |`);
+    process.exitCode = bad.length ? 1 : 0;
+    return;
   }
   const counts = {};
   for (const p of ok) counts[p.license] = (counts[p.license] || 0) + 1;
