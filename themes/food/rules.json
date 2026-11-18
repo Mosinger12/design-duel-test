@@ -1,0 +1,28 @@
+[
+  {
+    "id": "season",
+    "type": "tagShare",
+    "params": { "tags": ["autumn"], "partialTags": ["allyear"], "slots": ["base", "main", "side", "sauce", "garnish"] }
+  },
+  { "id": "vegetarian", "type": "forbidTags", "params": { "tags": ["meat", "fish"] } },
+  { "id": "vegan", "type": "forbidTags", "params": { "tags": ["meat", "fish", "dairy", "egg"] } },
+  { "id": "pescatarian", "type": "forbidTags", "params": { "tags": ["meat"] } },
+  { "id": "time", "type": "attributeSumMax", "params": { "attribute": "prepMinutes", "max": 30 } },
+  {
+    "id": "pairs",
+    "type": "pairs",
+    "params": {
+      "min": 1,
+      "pairs": [
+        ["citrus", "herb"],
+        ["sweet", "spicy"],
+        ["earthy", "nutty"],
+        ["smoky", "sweet"],
+        ["creamy", "fresh"],
+        ["umami", "citrus"],
+        ["earthy", "creamy"],
+        ["fresh", "citrus"]
+      ]
+    }
+  }
+]

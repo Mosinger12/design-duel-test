@@ -1,0 +1,213 @@
+{
+  "id": "tattoo",
+  "canvas": {
+    "width": 300,
+    "height": 300
+  },
+  "defaultVars": {
+    "ink": "#222226",
+    "accent": "#8A8A92",
+    "accent2": "#B0B0B8",
+    "skin": "#D9A877"
+  },
+  "backdrop": {
+    "base": [
+      {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "width": 300,
+        "height": 300,
+        "fill": "#2A2A30"
+      },
+      {
+        "type": "circle",
+        "cx": 150,
+        "cy": 150,
+        "r": 150,
+        "fill": "#34343C",
+        "opacity": 0.6
+      }
+    ],
+    "variantKey": "placement",
+    "variants": {
+      "wrist": [
+        {
+          "type": "rect",
+          "x": 98,
+          "y": -40,
+          "width": 104,
+          "height": 380,
+          "rx": 52,
+          "fill": "$skin"
+        },
+        {
+          "type": "rect",
+          "x": 160,
+          "y": -40,
+          "width": 30,
+          "height": 380,
+          "rx": 15,
+          "fill": "#FFFFFF",
+          "opacity": 0.08
+        },
+        {
+          "type": "path",
+          "d": "M112,52 Q150,60 188,52",
+          "fill": "none",
+          "stroke": "#000000",
+          "strokeWidth": 1.2,
+          "opacity": 0.15
+        },
+        {
+          "type": "path",
+          "d": "M114,62 Q150,69 186,62",
+          "fill": "none",
+          "stroke": "#000000",
+          "strokeWidth": 1,
+          "opacity": 0.12
+        }
+      ],
+      "forearm": [
+        {
+          "type": "path",
+          "d": "M78,-20 L222,-20 L236,320 L64,320 Z",
+          "fill": "$skin"
+        },
+        {
+          "type": "path",
+          "d": "M180,-20 L206,-20 L216,320 L190,320 Z",
+          "fill": "#FFFFFF",
+          "opacity": 0.07
+        },
+        {
+          "type": "path",
+          "d": "M82,0 L76,300",
+          "fill": "none",
+          "stroke": "#000000",
+          "strokeWidth": 6,
+          "opacity": 0.06
+        }
+      ],
+      "back": [
+        {
+          "type": "path",
+          "d": "M6,320 L14,118 C18,76 62,58 112,48 C126,30 136,14 150,14 C164,14 174,30 188,48 C238,58 282,76 286,118 L294,320 Z",
+          "fill": "$skin"
+        },
+        {
+          "type": "path",
+          "d": "M150,60 L150,300",
+          "fill": "none",
+          "stroke": "#000000",
+          "strokeWidth": 2,
+          "opacity": 0.1
+        },
+        {
+          "type": "path",
+          "d": "M70,110 C60,160 80,200 112,214",
+          "fill": "none",
+          "stroke": "#000000",
+          "strokeWidth": 1.5,
+          "opacity": 0.08
+        },
+        {
+          "type": "path",
+          "d": "M230,110 C240,160 220,200 188,214",
+          "fill": "none",
+          "stroke": "#000000",
+          "strokeWidth": 1.5,
+          "opacity": 0.08
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "id": "style",
+      "required": true,
+      "styled": true,
+      "transform": {
+        "x": 150,
+        "y": 150,
+        "scale": 1
+      }
+    },
+    {
+      "id": "frame",
+      "required": false,
+      "styled": true,
+      "transform": {
+        "x": 150,
+        "y": 150,
+        "scale": 1
+      }
+    },
+    {
+      "id": "motif",
+      "required": true,
+      "styled": true,
+      "transform": {
+        "x": 150,
+        "y": 150,
+        "scale": 1
+      }
+    },
+    {
+      "id": "color",
+      "required": true,
+      "transform": {
+        "x": 150,
+        "y": 150,
+        "scale": 1
+      }
+    }
+  ],
+  "pickOrder": [
+    "motif",
+    "style",
+    "color",
+    "frame"
+  ],
+  "filters": [
+    "none",
+    "golden",
+    "silver"
+  ],
+  "options": [
+    {
+      "id": "tone",
+      "var": "skin",
+      "values": [
+        {
+          "id": "tone1",
+          "color": "#F1D3BD"
+        },
+        {
+          "id": "tone2",
+          "color": "#D9A877"
+        },
+        {
+          "id": "tone3",
+          "color": "#A86B45"
+        },
+        {
+          "id": "tone4",
+          "color": "#6B4430"
+        }
+      ]
+    }
+  ],
+  "scaleBy": {
+    "attribute": "size",
+    "slots": [
+      "motif",
+      "frame"
+    ],
+    "unit": 0.45,
+    "min": 0.45
+  },
+  "contextFields": [
+    "placement"
+  ]
+}

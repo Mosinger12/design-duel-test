@@ -1,0 +1,45 @@
+{
+  "_info": "Register aller Dateien in /assets. Jede Datei braucht einen Eintrag mit Quelle, Lizenz, Datum und Ersteller/Prompt. Ein Test (__tests__/assets-register.test.ts) schlägt fehl, wenn ein Eintrag fehlt.",
+  "entries": [
+    {
+      "file": "android-icon-background.png",
+      "source": "Eigenes Werk – im Code erzeugt durch scripts/generate-icons.js (einfache geometrische Formen, keine Vorlage, kein Download)",
+      "license": "Eigentum des Projekts (proprietär)",
+      "date": "2026-11-18",
+      "creator": "Claude Code im Auftrag des Projektinhabers; Erzeugung: node scripts/generate-icons.js",
+      "prompt": "Kein KI-Bildgenerator verwendet. Motiv: zwei gegeneinander gekippte Karten mit goldener Raute auf Terrakotta-Hintergrund."
+    },
+    {
+      "file": "android-icon-foreground.png",
+      "source": "Eigenes Werk – im Code erzeugt durch scripts/generate-icons.js (einfache geometrische Formen, keine Vorlage, kein Download)",
+      "license": "Eigentum des Projekts (proprietär)",
+      "date": "2026-11-18",
+      "creator": "Claude Code im Auftrag des Projektinhabers; Erzeugung: node scripts/generate-icons.js",
+      "prompt": "Kein KI-Bildgenerator verwendet. Motiv: zwei gegeneinander gekippte Karten mit goldener Raute auf Terrakotta-Hintergrund."
+    },
+    {
+      "file": "android-icon-monochrome.png",
+      "source": "Eigenes Werk – im Code erzeugt durch scripts/generate-icons.js (einfache geometrische Formen, keine Vorlage, kein Download)",
+      "license": "Eigentum des Projekts (proprietär)",
+      "date": "2026-11-18",
+      "creator": "Claude Code im Auftrag des Projektinhabers; Erzeugung: node scripts/generate-icons.js",
+      "prompt": "Kein KI-Bildgenerator verwendet. Motiv: zwei gegeneinander gekippte Karten mit goldener Raute auf Terrakotta-Hintergrund."
+    },
+    {
+      "file": "favicon.png",
+      "source": "Eigenes Werk – im Code erzeugt durch scripts/generate-icons.js (einfache geometrische Formen, keine Vorlage, kein Download)",
+      "license": "Eigentum des Projekts (proprietär)",
+      "date": "2026-11-18",
+      "creator": "Claude Code im Auftrag des Projektinhabers; Erzeugung: node scripts/generate-icons.js",
+      "prompt": "Kein KI-Bildgenerator verwendet. Motiv: zwei gegeneinander gekippte Karten mit goldener Raute auf Terrakotta-Hintergrund."
+    },
+    {
+      "file": "icon.png",
+      "source": "Eigenes Werk – im Code erzeugt durch scripts/generate-icons.js (einfache geometrische Formen, keine Vorlage, kein Download)",
+      "license": "Eigentum des Projekts (proprietär)",
+      "date": "2026-11-18",
+      "creator": "Claude Code im Auftrag des Projektinhabers; Erzeugung: node scripts/generate-icons.js",
+      "prompt": "Kein KI-Bildgenerator verwendet. Motiv: zwei gegeneinander gekippte Karten mit goldener Raute auf Terrakotta-Hintergrund."
+    }
+  ]
+}

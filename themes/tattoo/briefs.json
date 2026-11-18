@@ -1,0 +1,383 @@
+[
+ {
+  "id": "first_wrist",
+  "context": {
+   "placement": "wrist"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "celestial"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "fineline"
+     ],
+     "nearTags": [
+      "dotwork",
+      "minimal"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "blackgrey"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ },
+ {
+  "id": "sailor_forearm",
+  "context": {
+   "placement": "forearm"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "maritime"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "traditional"
+     ],
+     "nearTags": [
+      "bold"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "color"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ },
+ {
+  "id": "summit_back",
+  "context": {
+   "placement": "back"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "adventure"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "dotwork"
+     ],
+     "nearTags": [
+      "geometric"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "blackgrey"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ },
+ {
+  "id": "romance_wrist",
+  "context": {
+   "placement": "wrist"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "romantic"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "watercolor"
+     ],
+     "nearTags": [
+      "fineline"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "color"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ },
+ {
+  "id": "freedom_forearm",
+  "context": {
+   "placement": "forearm"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "freedom"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "geometric"
+     ],
+     "nearTags": [
+      "fineline"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "blackgrey"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ },
+ {
+  "id": "night_sky_back",
+  "context": {
+   "placement": "back"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "celestial"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "fineline"
+     ],
+     "nearTags": [
+      "dotwork"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "blackgrey"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ },
+ {
+  "id": "ocean_forearm",
+  "context": {
+   "placement": "forearm"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "maritime"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "watercolor"
+     ],
+     "nearTags": [
+      "sketch"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "color"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ },
+ {
+  "id": "garden_forearm",
+  "context": {
+   "placement": "forearm"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "floral"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "traditional"
+     ],
+     "nearTags": [
+      "illustrative"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "color"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ },
+ {
+  "id": "traveler_wrist",
+  "context": {
+   "placement": "wrist"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "adventure"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "fineline"
+     ],
+     "nearTags": [
+      "geometric"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "blackgrey"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ },
+ {
+  "id": "wild_back",
+  "context": {
+   "placement": "back"
+  },
+  "criteria": [
+   {
+    "rule": "motif",
+    "params": {
+     "tags": [
+      "nature"
+     ]
+    }
+   },
+   {
+    "rule": "style",
+    "params": {
+     "tags": [
+      "traditional"
+     ],
+     "nearTags": [
+      "sketch"
+     ]
+    }
+   },
+   {
+    "rule": "ink",
+    "params": {
+     "tags": [
+      "color"
+     ]
+    }
+   },
+   {
+    "rule": "size"
+   }
+  ]
+ }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "style",
+    "type": "slotTagMatch",
+    "params": {
+      "slot": "style",
+      "tags": [
+        "fineline"
+      ]
+    }
+  },
+  {
+    "id": "motif",
+    "type": "slotTagMatch",
+    "params": {
+      "slot": "motif",
+      "tags": [
+        "nature"
+      ]
+    }
+  },
+  {
+    "id": "ink",
+    "type": "slotTagMatch",
+    "params": {
+      "slot": "color",
+      "tags": [
+        "blackgrey"
+      ]
+    }
+  },
+  {
+    "id": "size",
+    "type": "attributeSumRange",
+    "params": {
+      "attribute": "size",
+      "slots": [
+        "motif",
+        "frame"
+      ],
+      "contextKey": "placement",
+      "table": {
+        "wrist": {
+          "min": 1,
+          "max": 2
+        },
+        "forearm": {
+          "min": 2,
+          "max": 4
+        },
+        "back": {
+          "min": 4,
+          "max": 6
+        }
+      }
+    }
+  }
+]
