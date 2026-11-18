@@ -7,8 +7,8 @@ Veröffentlichung: ______________________  Datum: ____________  Geprüft von: __
 
 ## 1. Automatische Prüfungen (müssen alle grün sein)
 - [ ] `npx jest` – alle Tests grün (enthält Register-, Sperrlisten-, Fairness-, Sponsoring-, i18n-, Netzwerk-Tests)
-- [ ] `npm run license-check` – ohne Fehler (alle Pakete in node_modules mit MIT / Apache-2.0 / BSD-2-Clause / BSD-3-Clause / ISC / 0BSD)
-- [ ] `npm run bundle-license-check` – alle Pakete, die in der App landen (Web + iOS), mit erlaubter Lizenz
+- [ ] `npm run license-check` – ohne Fehler: alle Pakete, die in der App landen (Web + iOS) und alle direkten App-Abhängigkeiten haben MIT / Apache-2.0 / BSD-2-Clause / BSD-3-Clause / ISC / 0BSD (Entscheidung A, PROJEKT.md E-04)
+- [ ] `npm run license-report` angesehen: Sind neue Werkzeuge mit ungewöhnlicher Lizenz dazugekommen? (nur Info)
 - [ ] `npx expo export --platform web` – baut ohne Fehler
 
 ## 2. Ausdruck nicht kopieren (Mechanik übernehmen ist erlaubt)
@@ -29,7 +29,7 @@ Veröffentlichung: ______________________  Datum: ____________  Geprüft von: __
 - [ ] Grafiken nur selbst erzeugt (im Code) – keine Bilder aus dem Internet, keine KI-Bilder ohne dokumentierte Rechte.
 - [ ] Schriften: nur Systemschriften oder OFL-Schriften (aktuell: nur Systemschriften).
 - [ ] Sounds: nur eigene oder CC0 (aktuell: keine Sounds).
-- [ ] Neue Abhängigkeiten: Lizenz vorher geprüft; `docs/ABHAENGIGKEITEN.md` neu erzeugt (`node scripts/license-check.js --list`).
+- [ ] Neue Abhängigkeiten: Lizenz vorher geprüft; `docs/ABHAENGIGKEITEN.md` neu erzeugt (`node scripts/license-report.js --list`).
 
 ## 5. Fairness
 - [ ] Jedes Teil hat `tier` (free/premium); Bewertung ist unabhängig vom tier (Test).

@@ -28,7 +28,7 @@ Auf dem iPhone noch **nicht** getestet (kein Gerät in dieser Umgebung).
 | Lokale Speicherung | `src/storage/store.ts` |
 | Oberfläche | `src/ui/`, `App.tsx` |
 | Tests | `__tests__/` |
-| Prüf-Skripte | `scripts/license-check.js`, `scripts/bundle-license-check.js` |
+| Prüf-Skripte | `scripts/license-check.js` (maßgeblich), `scripts/license-report.js` (Info), `scripts/license-rules.js` |
 
 ## Entscheidungen (mit Begründung)
 | Nr. | Entscheidung | Begründung |
@@ -36,7 +36,7 @@ Auf dem iPhone noch **nicht** getestet (kein Gerät in dieser Umgebung).
 | E-01 | Expo **SDK 58** (aktuell stabil, 58.0.26), TypeScript, React Native 0.88. | Vorgabe „aktuelle stabile SDK“; Expo Go im App Store unterstützt nur die neueste SDK. |
 | E-02 | Keine Navigations-Bibliothek (kein Expo Router), einfache Bildschirm-Umschaltung in `App.tsx`. | Weniger Abhängigkeiten = weniger Lizenz- und Update-Risiko; 6 Bildschirme brauchen keinen Router. |
 | E-03 | Eigene Mini-Übersetzung (`src/i18n/index.ts`) statt i18n-Bibliothek. | Keine zusätzliche Abhängigkeit; alle Texte trotzdem in JSON (en/de je Thema). |
-| E-04 | `npm run license-check` prüft **streng** alle Pakete in node_modules, **ohne Ausnahmen** (wie vorgegeben). Er schlägt daher derzeit fehl (19 Build-/Test-Werkzeuge). Zusätzlich gibt es `npm run bundle-license-check`: prüft streng, was wirklich in der App landet (Web + iOS) – das ist grün. | Die Vorgabe „sonst Fehler“ wird nicht eigenmächtig aufgeweicht. Eine Ausnahmeliste für Werkzeuge war geplant, wurde aber bewusst **nicht** eingeführt: Das muss der Inhaber entscheiden (siehe O-01). |
+| E-04 | **Entscheidung des Inhabers (Option A, 18.11.2026):** Die Lizenzregel gilt für alles, was **in der App landet**. `npm run license-check` prüft daher ohne Ausnahmen (1) alle direkten App-Abhängigkeiten aus `package.json` und (2) jedes Paket in den gebauten Bundles für Web und iOS (ermittelt über Source-Maps), jeweils mit der Lizenz aus `node_modules`. `npm run license-report` listet zusätzlich alle installierten Pakete inkl. Build-/Test-Werkzeuge, nur zur Information (bricht nicht ab). | Build-/Test-Werkzeuge von Expo und Jest (19 Pakete, freizügige Lizenzen wie Blue Oak, CC0, Unlicense; `lightningcss` mit MPL-2.0) lassen sich nicht vermeiden und werden nicht ausgeliefert. Ursprünglich prüfte license-check alle Pakete und schlug deshalb fehl; ich hatte das bewusst nicht eigenmächtig gelockert, sondern zur Entscheidung vorgelegt (früher O-01). |
 | E-05 | Bild aus einfachen SVG-Formen (`react-native-svg`), Formen im Code (`src/render/glyphs.ts`). Film-Filter = Überlagerungen (Tönung, Schleier, Vignette, Korn) statt SVG-Filter. | Läuft identisch auf iPhone und Web, keine Bilddateien, keine Rechte-Fragen, deterministisch (gleiches Ergebnis = gleiches Bild). |
 | E-06 | Themen-neutrale Regeltypen: `forbidTags`, `tagShare`, `attributeSumMax`, `pairs`, `slotTagMatch`, `attributeSumRange`. Themen wählen Typ + Parameter in `rules.json`, Aufträge überschreiben Parameter. | Neue Themen brauchen nur JSON, keinen Code. |
 | E-07 | Sterne = 1 + ⌊Punktzahl × 4 + 0,25⌋; 5 Sterne erst ab 93,75 %. Unvollständig = 1 Stern, Bewerten-Knopf gesperrt. | Eine klar verfehlte Vorgabe soll nie 5 Sterne geben; trotzdem nicht zu streng. |
@@ -67,7 +67,7 @@ Auf dem iPhone noch **nicht** getestet (kein Gerät in dieser Umgebung).
 ## Offene Punkte
 | Nr. | Punkt | Nächster Schritt |
 |---|---|---|
-| **O-01** | **`npm run license-check` schlägt fehl**: 19 Pakete mit Lizenz außerhalb der Erlaubt-Liste. Alle sind Build-/Test-/Entwickler-Werkzeuge (Expo-CLI, Metro, Babel, Jest), **keines** steckt in der App (nachgewiesen mit `bundle-license-check`). Lizenzen: BlueOak-1.0.0 (glob, minimatch, lru-cache, minipass, path-scurry, sax, graceful-fs, jackspeak, package-json-from-dist), MPL-2.0 (lightningcss), CC-BY-4.0 (caniuse-lite), Unlicense (big-integer, stream-buffers), Python-2.0 (argparse), MIT-0 (@csstools/color-helpers), CC0-1.0 (mdn-data). Ohne Expo/Jest lassen sie sich nicht vermeiden. | **Entscheidung des Inhabers**: (A) Regel gilt nur für das, was in der App landet → `bundle-license-check` wird die maßgebliche Prüfung; (B) dokumentierte Ausnahmeliste nur für Werkzeuge (mit Begründung je Paket); (C) Regel bleibt wie sie ist → Prüfung bleibt rot. |
+| ~~O-01~~ | **Erledigt durch Entscheidung A (E-04).** Ursprünglich: `npm run license-check` schlug fehl: 19 Pakete mit Lizenz außerhalb der Erlaubt-Liste. Alle sind Build-/Test-/Entwickler-Werkzeuge (Expo-CLI, Metro, Babel, Jest), **keines** steckt in der App (nachgewiesen mit `bundle-license-check`, heute `license-check`). Lizenzen: BlueOak-1.0.0 (glob, minimatch, lru-cache, minipass, path-scurry, sax, graceful-fs, jackspeak, package-json-from-dist), MPL-2.0 (lightningcss), CC-BY-4.0 (caniuse-lite), Unlicense (big-integer, stream-buffers), Python-2.0 (argparse), MIT-0 (@csstools/color-helpers), CC0-1.0 (mdn-data). Ohne Expo/Jest lassen sie sich nicht vermeiden. | Entschieden: Option A. Bei jedem neuen Paket trotzdem auf die Lizenz achten – landet es in der App, schlägt `license-check` an. |
 | O-02 | Duell-Modus (Spieler gegen Spieler oder gegen eine gespeicherte Lösung) ist noch nicht gebaut – war nicht Teil der Aufgabenliste. | Konzept ohne Server: z. B. lokales Duell gegen eine zufällige, regelbasiert erzeugte Lösung. |
 | O-03 | iPhone-Test mit Expo Go steht aus. | Siehe Prüfliste im README / Abschlussbericht. |
 | O-04 | Für den Web-Test in Deutschland: Impressum und Datenschutzhinweis nötig. | Texte erstellen (lassen), bevor die Web-Version öffentlich erreichbar ist. |
@@ -89,4 +89,7 @@ Alle Einträge selbst ausgeführt in der Cloud-Umgebung (Linux, Node 22.23.5, np
 | 18.11.2026 | `npx expo export --platform web` | bestanden, Ausgabe in `dist/` |
 | 18.11.2026 | `npx expo export --platform ios` (nur Bundle, kein App-Build) | bestanden |
 | 18.11.2026 | Web-Build im Browser (Chromium, iPhone-Größe) durchgeklickt: Altersabfrage, Food-Auftrag, Bewertung, Thema/Sprache wechseln, Tattoo-Aufträge (5 Sterne und 1 Stern), Neuladen → Sammlung | bestanden; 0 externe Netzwerk-Anfragen, 0 Fehler in der Konsole |
+| 18.11.2026 | Nach Entscheidung A: `npm run license-check` (neu: App-Abhängigkeiten + Bundles web/ios) | **bestanden**: 39 Pakete in der App, alle MIT / ISC / BSD-3-Clause, Exit-Code 0 |
+| 18.11.2026 | Gegenprobe: Paket mit CC0-Lizenz vorübergehend als App-Abhängigkeit eingetragen | Prüfung schlägt korrekt an (FEHLER, Exit-Code 1); danach zurückgesetzt |
+| 18.11.2026 | `npm run license-report` (alle 736 installierten Pakete, nur Info) | 717 erlaubt, 19 Werkzeuge mit anderer Lizenz (nicht in der App) |
 | – | iPhone mit Expo Go | **nicht ausgeführt** (kein Gerät verfügbar) |

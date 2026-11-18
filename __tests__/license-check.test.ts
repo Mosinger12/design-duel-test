@@ -1,5 +1,5 @@
-/** Selbsttest der Lizenz-Logik von scripts/license-check.js (nicht der Lauf über node_modules). */
-const { isAllowed, normalizeLicense } = require('../scripts/license-check');
+/** Selbsttest der Lizenz-Regeln (scripts/license-rules.js), die license-check und license-report nutzen. */
+const { isAllowed, normalizeLicense } = require('../scripts/license-rules');
 
 describe('license-check: Lizenz-Auswertung', () => {
   it.each(['MIT', 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'ISC', '0BSD'])('%s ist erlaubt', (l) => expect(isAllowed(l)).toBe(true));

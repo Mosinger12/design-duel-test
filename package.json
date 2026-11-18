@@ -31,8 +31,8 @@
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "license-check": "node scripts/license-check.js",
-    "bundle-license-check": "node scripts/bundle-license-check.js",
-    "icons": "node scripts/generate-icons.js"
+    "icons": "node scripts/generate-icons.js",
+    "license-report": "node scripts/license-report.js"
   },
   "private": true,
   "jest": {

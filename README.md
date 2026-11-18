@@ -89,15 +89,14 @@ Was geprüft wird (Auswahl): Bewertung und Begründungen, **Fairness** (Premium 
 ```
 npm run license-check
 ```
-Prüft die Lizenz **jedes** installierten Pakets. Erlaubt sind nur MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD.
-Bei einem Verstoß erscheint „FEHLER“ mit einer Liste.
+Prüft alles, was **in der App landet** (Web und iPhone): Das Skript baut die App kurz zusammen (dauert ca. 1 Minute), schaut nach, welche Pakete darin stecken, und liest deren Lizenz aus `node_modules`. Erlaubt sind nur MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD – ohne Ausnahmen.
+Am Ende steht `OK: …` oder `FEHLER: …` mit einer Liste.
 
-> **Aktueller Stand:** Diese Prüfung meldet derzeit **19 Fehler**. Alle betreffen Hilfsprogramme zum Bauen und Testen (z. B. `caniuse-lite`, `lightningcss`, `glob`), die **nicht** in der App landen. Wie damit umgegangen wird, ist eine offene Entscheidung – siehe `PROJEKT.md`, Abschnitt „Offene Punkte“, O-01.
-
-Zusätzlich die strenge Prüfung dessen, was wirklich in der App steckt (Web und iPhone):
+Zur Information gibt es außerdem einen Bericht über **alle** installierten Pakete, auch die Hilfsprogramme zum Bauen und Testen:
 ```
-npm run bundle-license-check
+npm run license-report
 ```
+Dort tauchen 19 Hilfsprogramme mit anderen (freizügigen) Lizenzen auf. Das ist so gewollt: Sie landen nicht in der App (Entscheidung „A“, siehe `PROJEKT.md`, E-04).
 
 Liste aller Pakete mit Lizenz: `docs/ABHAENGIGKEITEN.md`.
 

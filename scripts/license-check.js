@@ -1,128 +1,75 @@
 #!/usr/bin/env node
 /**
- * Lizenz-Prüfung: liest die Lizenz JEDES Pakets in node_modules (rekursiv,
- * inkl. verschachtelter node_modules und @scope-Ordner) aus dessen package.json.
+ * LIZENZ-PRÜFUNG (maßgeblich, Entscheidung des Inhabers: PROJEKT.md E-04, Option A).
+ * Regel: Alles, was in der App landet, muss eine erlaubte Lizenz haben – ohne Ausnahmen.
  *
- * Erlaubt: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD.
- * SPDX-Ausdrücke: "A OR B" ist ok, wenn mindestens eine Seite erlaubt ist;
- * "A AND B" ist ok, wenn alle Seiten erlaubt sind.
+ * 1. Alle direkten App-Abhängigkeiten ("dependencies" in package.json) werden geprüft.
+ * 2. Baut die Exporte für Web UND iOS mit Source-Maps (Ordner .bundle-check/), liest daraus
+ *    jedes enthaltene Paket, liest dessen Lizenz aus node_modules/<paket>/package.json
+ * Baut die Exporte für Web UND iOS mit Source-Maps (Ordner .bundle-check/), liest daraus alle enthaltenen Pakete aus
+ *    und prüft sie gegen die Erlaubt-Liste (MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD).
+ * Exit-Code 1 bei jedem Verstoß.
  *
- * Es gibt KEINE Ausnahmen. (Ob Build-/Test-Werkzeuge ausgenommen werden dürfen,
- * ist eine offene Entscheidung des Projektinhabers, siehe PROJEKT.md, Offene Punkte.)
- *
- * Exit-Code 1 bei jedem nicht erlaubten, fehlenden oder unlesbaren Eintrag.
+ * Aufruf: npm run license-check   (Option --no-build: vorhandenen Ordner .bundle-check/ nutzen)
+ * Bericht über ALLE installierten Pakete (inkl. Werkzeuge, nur Info): npm run license-report
  */
 const fs = require('fs');
 const path = require('path');
+const { spawnSync } = require('child_process');
+const { isAllowed, normalizeLicense } = require('./license-rules');
 
 const ROOT = path.resolve(__dirname, '..');
-const ALLOWED = new Set(['MIT', 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'ISC', '0BSD']);
-const JSON_OUT = process.argv.includes('--json'); // --list: Markdown-Tabelle aller Pakete
+const DIST = path.join(ROOT, '.bundle-check');
 
-function normalizeLicense(pkg) {
-  let lic = pkg.license;
-  if (lic && typeof lic === 'object') lic = lic.type;
-  if (!lic && Array.isArray(pkg.licenses)) {
-    const types = pkg.licenses.map((l) => (typeof l === 'string' ? l : l && l.type)).filter(Boolean);
-    if (types.length) lic = types.length === 1 ? types[0] : '(' + types.join(' OR ') + ')';
-  }
-  return typeof lic === 'string' ? lic.trim() : '';
+if (!process.argv.includes('--no-build')) {
+  console.log('Baue Exporte (web + ios) mit Source-Maps …');
+  const r = spawnSync('npx', ['expo', 'export', '--platform', 'web', '--platform', 'ios', '--source-maps', '--output-dir', '.bundle-check'], {
+    cwd: ROOT, stdio: 'inherit', env: { ...process.env, EXPO_NO_TELEMETRY: '1' }, shell: process.platform === 'win32',
+  });
+  if (r.status !== 0) { console.error('FEHLER: Export (web/ios) fehlgeschlagen.'); process.exit(1); }
 }
 
-/** Minimaler SPDX-Auswerter für OR/AND/Klammern. */
-function isAllowed(expr) {
-  const tokens = expr.replace(/\(/g, ' ( ').replace(/\)/g, ' ) ').split(/\s+/).filter(Boolean);
-  let i = 0;
-  function parseOr() {
-    let v = parseAnd();
-    while (tokens[i] && tokens[i].toUpperCase() === 'OR') { i++; const r = parseAnd(); v = v || r; }
-    return v;
-  }
-  function parseAnd() {
-    let v = parseAtom();
-    while (tokens[i] && tokens[i].toUpperCase() === 'AND') { i++; const r = parseAtom(); v = v && r; }
-    return v;
-  }
-  function parseAtom() {
-    const t = tokens[i++];
-    if (t === '(') { const v = parseOr(); i++; return v; }
-    if (!t) return false;
-    // "WITH"-Ausnahmen (z. B. Apache-2.0 WITH LLVM-exception) gelten als nicht automatisch erlaubt
-    if (tokens[i] && tokens[i].toUpperCase() === 'WITH') { i += 2; return false; }
-    return ALLOWED.has(t);
-  }
-  try { const v = parseOr(); return i >= tokens.length && v; } catch { return false; }
+function findMaps(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const p = path.join(dir, e.name);
+    return e.isDirectory() ? findMaps(p) : p.endsWith('.map') ? [p] : [];
+  });
 }
 
-function collectPackages() {
-  const found = new Map(); // key name@version -> {name, version, license, dirs[]}
-  function scanNodeModules(dir) {
-    if (!fs.existsSync(dir)) return;
-    for (const entry of fs.readdirSync(dir)) {
-      if (entry.startsWith('.')) continue;
-      const full = path.join(dir, entry);
-      if (entry.startsWith('@')) {
-        for (const sub of fs.readdirSync(full)) scanPackage(path.join(full, sub));
-      } else {
-        scanPackage(full);
-      }
-    }
+const maps = findMaps(DIST);
+if (!maps.length) { console.error('FEHLER: keine Source-Maps in .bundle-check/ gefunden.'); process.exit(1); }
+console.log('Source-Maps:', maps.map((m) => path.relative(DIST, m)).join(', '));
+
+const pkgDirs = new Set();
+for (const m of maps) {
+  const map = JSON.parse(fs.readFileSync(m, 'utf8'));
+  // Metro erzeugt "indexierte" Source-Maps (sections) mit Pfaden relativ zum Projekt ("/node_modules/…")
+  const sources = map.sources ?? (map.sections ?? []).flatMap((sec) => sec.map?.sources ?? []);
+  for (const s of sources) {
+    const abs = s.startsWith('/node_modules/') || s.startsWith('/src/') ? path.join(ROOT, s) : path.resolve(path.dirname(m), s);
+    const norm = abs.split(path.sep).join('/');
+    const i = norm.lastIndexOf('/node_modules/');
+    if (i < 0) continue;
+    const rest = norm.slice(i + '/node_modules/'.length).split('/');
+    const name = rest[0].startsWith('@') ? `${rest[0]}/${rest[1]}` : rest[0];
+    pkgDirs.add(norm.slice(0, i) + '/node_modules/' + name);
   }
-  function scanPackage(dir) {
-    let stat;
-    try { stat = fs.lstatSync(dir); } catch { return; }
-    if (!stat.isDirectory()) return;
-    const pj = path.join(dir, 'package.json');
-    if (fs.existsSync(pj)) {
-      let pkg;
-      try { pkg = JSON.parse(fs.readFileSync(pj, 'utf8')); } catch { pkg = null; }
-      if (pkg && pkg.name) {
-        const key = pkg.name + '@' + pkg.version;
-        const rel = path.relative(ROOT, dir);
-        if (!found.has(key)) found.set(key, { name: pkg.name, version: pkg.version, license: normalizeLicense(pkg), dirs: [rel] });
-        else found.get(key).dirs.push(rel);
-      } else if (!pkg) {
-        found.set('UNREADABLE:' + dir, { name: path.relative(ROOT, dir), version: '?', license: '', dirs: [dir], unreadable: true });
-      }
-    }
-    scanNodeModules(path.join(dir, 'node_modules'));
-  }
-  scanNodeModules(path.join(ROOT, 'node_modules'));
-  return [...found.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function main() {
-  if (!fs.existsSync(path.join(ROOT, 'node_modules'))) {
-    console.error('FEHLER: node_modules fehlt. Bitte zuerst "npm install" ausführen.');
-    process.exit(1);
-  }
-  const pkgs = collectPackages();
-  const ok = [], bad = [];
-  for (const p of pkgs) {
-    if (p.license && isAllowed(p.license)) ok.push(p);
-    else bad.push(p);
-  }
-  if (JSON_OUT) {
-    console.log(JSON.stringify({ ok, bad }, null, 2));
-    process.exitCode = bad.length ? 1 : 0; // exitCode statt exit(): große Ausgabe wird vollständig geschrieben
-    return;
-  }
-  if (process.argv.includes('--list')) {
-    for (const p of pkgs) console.log(`| ${p.name} | ${p.version} | ${p.license || 'KEINE ANGABE'} | ${isAllowed(p.license) ? 'ja' : 'NEIN'} |`);
-    process.exitCode = bad.length ? 1 : 0;
-    return;
-  }
-  const counts = {};
-  for (const p of ok) counts[p.license] = (counts[p.license] || 0) + 1;
-  console.log(`Geprüfte Pakete: ${pkgs.length}`);
-  console.log('Erlaubte Lizenzen:', Object.entries(counts).map(([k, v]) => `${k}: ${v}`).join(', '));
-  if (bad.length) {
-    console.error(`\nFEHLER: ${bad.length} Paket(e) mit nicht erlaubter oder fehlender Lizenz:`);
-    for (const p of bad) console.error(`  x ${p.name}@${p.version} [${p.license || 'KEINE ANGABE'}] (${p.dirs[0]})`);
-    process.exit(1);
-  }
-  console.log('\nOK: alle Lizenzen erlaubt.');
+const rows = [];
+let bad = 0;
+const appPkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
+for (const dep of Object.keys(appPkg.dependencies || {})) pkgDirs.add(path.join(ROOT, 'node_modules', dep).split(path.sep).join('/'));
+for (const dir of [...pkgDirs].sort()) {
+  const pj = path.join(dir, 'package.json');
+  const pkg = JSON.parse(fs.readFileSync(pj, 'utf8'));
+  const lic = normalizeLicense(pkg);
+  const ok = !!lic && isAllowed(lic);
+  if (!ok) bad++;
+  rows.push(`${ok ? '  ok' : '  x '} ${pkg.name}@${pkg.version} [${lic || 'KEINE ANGABE'}]`);
 }
-
-if (require.main === module) main();
-module.exports = { isAllowed, normalizeLicense, collectPackages };
+console.log(`\nPakete in der App (direkte Abhängigkeiten + Inhalt der Bundles web/ios): ${rows.length}`);
+console.log(rows.join('\n'));
+if (bad) { console.error(`\nFEHLER: ${bad} Paket(e) im App-Bundle mit nicht erlaubter Lizenz.`); process.exit(1); }
+console.log('\nOK: alle im App-Bundle enthaltenen Pakete haben eine erlaubte Lizenz (ohne Ausnahmen).');

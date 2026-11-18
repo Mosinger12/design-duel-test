@@ -12,7 +12,7 @@ Ausführlicher Kontext, Entscheidungen und offene Punkte: `PROJEKT.md`. Rechte-C
 - **Keine Netzwerk-Aufrufe**, keine kostenpflichtigen Dienste, keine Werbe-/Analyse-/Tracking-SDKs, keine KI zur Laufzeit.
 - Später nur hinter Fernschaltern (`src/config/featureFlags.ts`, alle Standardwerte **aus**) und Kostenschutz (`src/config/costGuard.ts`, Tageskontingent **0**).
 - **Rechte:** Mechanik übernehmen ja, Ausdruck kopieren nie. Keine Vorlagen/Texte/Grafiken anderer Spiele, keine Marken, Logos, Promis, Künstlernamen.
-- Code-Lizenzen nur MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD. Schriften nur OFL/System. Sounds nur eigen/CC0.
+- Code-Lizenzen nur MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD – für alles, was in der App landet (Entscheidung A, PROJEKT.md E-04). Build-/Test-Werkzeuge: nur Info über `npm run license-report`. Schriften nur OFL/System. Sounds nur eigen/CC0.
 - Grafiken nur als im Code erzeugte einfache Formen (`src/render/glyphs.ts`). Jede Datei in `/assets` braucht einen Eintrag in `assets/REGISTER.json`.
 - **Fairness:** Bewertung liest nie `tier`/`sponsor`/`label`. Jeder Auftrag muss mit kostenlosen Teilen 5 Sterne erreichen. Bewertung immer begründet.
 - **Sponsoring** nur mit Schalter `sponsoredContent` und immer mit sichtbarer Kennzeichnung „Sponsored“.
@@ -30,7 +30,6 @@ Ausführlicher Kontext, Entscheidungen und offene Punkte: `PROJEKT.md`. Rechte-C
 npx tsc --noEmit
 npx jest
 npm run license-check
-npm run bundle-license-check
 npx expo export --platform web
 ```
 - Neue Pakete nur mit `EXPO_OFFLINE=1 npx expo install <paket>` und vorher Lizenz prüfen.

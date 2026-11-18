@@ -1,6 +1,8 @@
 # Alle installierten Pakete mit Lizenz
 
-Automatisch erzeugt mit `node scripts/license-check.js --list` am 2026-11-18 (Linux-Installation; auf Mac/Windows weichen einzelne betriebssystem-spezifische Pakete ab).
+Automatisch erzeugt mit `node scripts/license-report.js --list` am 2026-11-18 (Linux-Installation; auf Mac/Windows weichen einzelne betriebssystem-spezifische Pakete ab).
+
+Maßgeblich ist nur, was in der App landet (`npm run license-check`, Entscheidung A). „NEIN“ betrifft hier ausschließlich Build-/Test-Werkzeuge.
 
 Spalte „Erlaubt“ = Lizenz steht auf der Erlaubt-Liste (MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD; bei „A OR B“ genügt eine Seite).
 
