@@ -2,6 +2,7 @@ import React from 'react';
 import Svg, { Circle, Defs, Ellipse, G, Line, Path, Polygon, RadialGradient, Rect, Stop } from 'react-native-svg';
 import type { Primitive } from '../engine/types';
 import type { SceneData } from './scene';
+import { withGradients } from './gradients';
 
 /** Zeichnet ein einzelnes Grundelement. Es gibt bewusst kein Text-Element. */
 export function Prim({ p }: { p: Primitive }) {
@@ -40,11 +41,15 @@ export function Scene({ data, size, lite = false, testID }: { data: SceneData; s
           </RadialGradient>
         </Defs>
       ) : null}
-      {data.layers.map((layer) => (
-        <G key={layer.key} transform={layer.transform}>
-          {layer.prims.map((p, i) => <Prim key={i} p={p} />)}
-        </G>
-      ))}
+      {data.layers.map((layer) => {
+        const g = withGradients(layer.prims, 'g');
+        return (
+          <G key={layer.key} transform={layer.transform} opacity={layer.opacity}>
+            {g.defs}
+            {g.prims.map((p, i) => <Prim key={i} p={p} />)}
+          </G>
+        );
+      })}
       {filter.tint ? <Rect x={0} y={0} width={data.width} height={data.height} fill={filter.tint.color} opacity={filter.tint.opacity} /> : null}
       {filter.haze ? <Rect x={0} y={0} width={data.width} height={data.height} fill={filter.haze.color} opacity={filter.haze.opacity} /> : null}
       {!lite && data.grain.length ? <G>{data.grain.map((p, i) => <Prim key={i} p={p} />)}</G> : null}

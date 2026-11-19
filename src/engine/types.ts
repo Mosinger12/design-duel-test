@@ -108,6 +108,8 @@ export interface ScaleBy {
   slots: string[];
   /** Maßstab je Attribut-Punkt. */
   unit: number;
+  /** Grundmaßstab, zu dem unit × Summe addiert wird (Standard 0). */
+  base?: number;
   /** Maßstab, wenn die Summe 0 ist. */
   min: number;
 }
@@ -124,6 +126,8 @@ export interface ThemeManifest {
   options?: ThemeOption[];
   /** Optional: Größe der "styled"-Ebenen hängt von einem Attribut ab (Tattoo-Größe). */
   scaleBy?: ScaleBy;
+  /** Optischer Effekt für "styled"-Ebenen, z. B. Tinte in der Haut: Deckkraft und weicher Konturrand. */
+  styledEffect?: { opacity?: number; bleed?: number };
   /** Standardwerte für Farb-Variablen ($name). */
   defaultVars?: Record<string, string>;
   /** Kontextfelder eines Auftrags, die übersetzt angezeigt werden (Schlüssel "context.<feld>.<wert>"). */

@@ -18,15 +18,7 @@
         "y": 0,
         "width": 300,
         "height": 300,
-        "fill": "#2A2A30"
-      },
-      {
-        "type": "circle",
-        "cx": 150,
-        "cy": 150,
-        "r": 150,
-        "fill": "#34343C",
-        "opacity": 0.6
+        "fill": "rad:#3B3B44:#1C1C21"
       }
     ],
     "variantKey": "placement",
@@ -34,26 +26,50 @@
       "wrist": [
         {
           "type": "rect",
-          "x": 98,
+          "x": 97,
           "y": -40,
-          "width": 104,
+          "width": 118,
           "height": 380,
-          "rx": 52,
+          "rx": 59,
+          "fill": "#000000",
+          "opacity": 0.25
+        },
+        {
+          "type": "rect",
+          "x": 91,
+          "y": -40,
+          "width": 118,
+          "height": 380,
+          "rx": 59,
           "fill": "$skin"
         },
         {
           "type": "rect",
-          "x": 160,
+          "x": 91,
+          "y": -40,
+          "width": 32,
+          "height": 380,
+          "fill": "lin:rgba(0,0,0,0.28):rgba(0,0,0,0):0"
+        },
+        {
+          "type": "rect",
+          "x": 177,
+          "y": -40,
+          "width": 32,
+          "height": 380,
+          "fill": "lin:rgba(0,0,0,0):rgba(0,0,0,0.28):0"
+        },
+        {
+          "type": "rect",
+          "x": 138,
           "y": -40,
           "width": 30,
           "height": 380,
-          "rx": 15,
-          "fill": "#FFFFFF",
-          "opacity": 0.08
+          "fill": "lin:rgba(255,255,255,0):rgba(255,255,255,0.16):0"
         },
         {
           "type": "path",
-          "d": "M112,52 Q150,60 188,52",
+          "d": "M106,52 Q150,61 194,52",
           "fill": "none",
           "stroke": "#000000",
           "strokeWidth": 1.2,
@@ -61,7 +77,7 @@
         },
         {
           "type": "path",
-          "d": "M114,62 Q150,69 186,62",
+          "d": "M108,62 Q150,70 192,62",
           "fill": "none",
           "stroke": "#000000",
           "strokeWidth": 1,
@@ -71,22 +87,29 @@
       "forearm": [
         {
           "type": "path",
+          "d": "M86,-20 L230,-20 L244,320 L72,320 Z",
+          "fill": "#000000",
+          "opacity": 0.25
+        },
+        {
+          "type": "path",
           "d": "M78,-20 L222,-20 L236,320 L64,320 Z",
           "fill": "$skin"
         },
         {
           "type": "path",
-          "d": "M180,-20 L206,-20 L216,320 L190,320 Z",
-          "fill": "#FFFFFF",
-          "opacity": 0.07
+          "d": "M78,-20 L118,-20 L106,320 L64,320 Z",
+          "fill": "lin:rgba(0,0,0,0.28):rgba(0,0,0,0):0"
         },
         {
           "type": "path",
-          "d": "M82,0 L76,300",
-          "fill": "none",
-          "stroke": "#000000",
-          "strokeWidth": 6,
-          "opacity": 0.06
+          "d": "M182,-20 L222,-20 L236,320 L196,320 Z",
+          "fill": "lin:rgba(0,0,0,0):rgba(0,0,0,0.28):0"
+        },
+        {
+          "type": "path",
+          "d": "M150,-20 L180,-20 L188,320 L158,320 Z",
+          "fill": "lin:rgba(255,255,255,0):rgba(255,255,255,0.16):0"
         }
       ],
       "back": [
@@ -96,28 +119,60 @@
           "fill": "$skin"
         },
         {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 60,
+          "height": 320,
+          "fill": "lin:rgba(0,0,0,0.28):rgba(0,0,0,0):0"
+        },
+        {
+          "type": "rect",
+          "x": 240,
+          "y": 0,
+          "width": 60,
+          "height": 320,
+          "fill": "lin:rgba(0,0,0,0):rgba(0,0,0,0.28):0"
+        },
+        {
           "type": "path",
           "d": "M150,60 L150,300",
           "fill": "none",
           "stroke": "#000000",
-          "strokeWidth": 2,
-          "opacity": 0.1
+          "strokeWidth": 3,
+          "opacity": 0.08
+        },
+        {
+          "type": "path",
+          "d": "M147,60 L147,300",
+          "fill": "none",
+          "stroke": "#FFFFFF",
+          "strokeWidth": 1.5,
+          "opacity": 0.08
         },
         {
           "type": "path",
           "d": "M70,110 C60,160 80,200 112,214",
           "fill": "none",
           "stroke": "#000000",
-          "strokeWidth": 1.5,
-          "opacity": 0.08
+          "strokeWidth": 2,
+          "opacity": 0.09
         },
         {
           "type": "path",
           "d": "M230,110 C240,160 220,200 188,214",
           "fill": "none",
           "stroke": "#000000",
+          "strokeWidth": 2,
+          "opacity": 0.09
+        },
+        {
+          "type": "path",
+          "d": "M100,62 C125,70 140,90 150,100 C160,90 175,70 200,62",
+          "fill": "none",
+          "stroke": "#000000",
           "strokeWidth": 1.5,
-          "opacity": 0.08
+          "opacity": 0.06
         }
       ]
     }
@@ -204,10 +259,15 @@
       "motif",
       "frame"
     ],
-    "unit": 0.45,
+    "base": 0.35,
+    "unit": 0.33,
     "min": 0.45
   },
   "contextFields": [
     "placement"
-  ]
+  ],
+  "styledEffect": {
+    "opacity": 0.9,
+    "bleed": 2.4
+  }
 }
