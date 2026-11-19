@@ -110,3 +110,5 @@ Liste aller Pakete mit Lizenz: `docs/ABHAENGIGKEITEN.md`.
 - `PROJEKT.md` – Entscheidungen, Annahmen, offene Punkte, Prüfprotokoll
 - `RECHTE.md` – Checkliste vor jeder Veröffentlichung
 - `CLAUDE.md` – Arbeitsregeln für die KI-Unterstützung
+- `docs/TESTLEITFADEN.md` – Anleitung für den Thementest (Food oder Tattoo zuerst?)
+- `docs/test-boegen.pdf` – Druckvorlagen: Fragebogen, Beobachtungsbogen, Strichliste

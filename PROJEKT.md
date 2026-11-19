@@ -13,9 +13,8 @@
 - Rechte (Abnahmekriterium): Mechanik übernehmen erlaubt, Ausdruck kopieren nie. Keine Vorlagen, Texte, Screenshots oder Grafiken anderer Spiele (insb. nicht „Aesthetic“, „Cover Club“, „Food Stylist“, „MasterChef“). Keine Marken, Logos, Promis, Künstlernamen. Code-Lizenzen nur MIT/Apache-2.0/BSD/ISC/0BSD, Schriften nur OFL/System, Sounds nur eigen/CC0.
 - Fairness: Bezahlte Teile geben nie einen Wertungsvorteil. Bewertung wird immer begründet.
 
-## Stand (18.11.2026)
-Prototyp läuft (Web-Build gebaut, im Browser durchgeklickt). Beide Themen mit je 10 Aufträgen spielbar, Bewertung mit Begründung, Sammlung bleibt nach Neustart erhalten, Englisch/Deutsch umschaltbar.
-Auf dem iPhone noch **nicht** getestet (kein Gerät in dieser Umgebung).
+## Stand (19.11.2026)
+Prototyp läuft (Web-Build gebaut, im Browser durchgeklickt). Beide Themen mit je 10 Aufträgen spielbar, Bewertung mit Begründung, Sammlung bleibt nach Neustart erhalten, Englisch/Deutsch umschaltbar. iPhone-Test durch den Inhaber bestanden. Grafiken für den Thementest aufgewertet; Testleitfaden und Druckbögen liegen in `docs/`. **Nächster Schritt: Thementest durch den Inhaber.**
 
 ## Aufbau (Kurzüberblick)
 | Bereich | Ort |
@@ -51,6 +50,8 @@ Auf dem iPhone noch **nicht** getestet (kein Gerät in dieser Umgebung).
 | E-16 | Expo-CLI wird über `scripts/expo.js` mit `EXPO_NO_TELEMETRY=1` gestartet (`npm start`, `npm run web`). | Kein unnötiger Datenverkehr des Entwicklungswerkzeugs. |
 | E-17 | Speicherung lokal mit AsyncStorage (iPhone: Gerätespeicher, Web: localStorage). Kaputte Daten → Standardwerte statt Absturz. | Übersteht Neustart, keine Cloud. |
 | E-18 | Food-Inhalte nach Fairness-Test angepasst: neue Zutaten „Gegrillte Zucchini“, „Frischer Meerrettich“; Zeiten justiert; „Gemütlich vegan im Winter“ auf 70 Min. | Der Test hatte gezeigt, dass 6 Food-Aufträge mit kostenlosen Teilen nicht perfekt lösbar waren. |
+| E-19 | **Grafik-Upgrade für den Thementest** (19.11.2026), weiterhin nur im Code erzeugt: Farbverläufe (neu in der Engine: `lin:`/`rad:`), Licht und Schatten auf allen Food-Formen, Holztisch mit Serviette und Besteck, Haut mit Rundung, Tinte mit weichem Rand und leichter Transparenz (`styledEffect`), mehr Details in den Tattoo-Motiven, kleine Motive größer (`scaleBy.base`). | Beide Themen bekommen die **gleiche** Qualität, damit der Vergleich fair ist. Echte (KI-)Bilder erst für das Gewinner-Thema, sonst doppelte Kosten. |
+| E-20 | **Thementest als begleiteter Test** mit 10–15 Personen auf dem iPhone des Inhabers (Expo Go), nicht als öffentliche Web-Version. Leitfaden: `docs/TESTLEITFADEN.md`, Druckbögen: `docs/test-boegen.pdf`. Entscheidungsregel vorab festgelegt (≥ 60 % „würde weiterspielen“, sonst Spaß → Installieren → Hilfebedarf). | Kein Hosting, kein Impressum, keine Analyse-Werkzeuge nötig; Beobachtung liefert mehr Erkenntnisse als Zahlen. Vorab festgelegte Regel verhindert Bauchentscheidung. |
 
 ## Annahmen (mit Status)
 | Nr. | Annahme | Status |
@@ -70,8 +71,8 @@ Auf dem iPhone noch **nicht** getestet (kein Gerät in dieser Umgebung).
 | ~~O-01~~ | **Erledigt durch Entscheidung A (E-04).** Ursprünglich: `npm run license-check` schlug fehl: 19 Pakete mit Lizenz außerhalb der Erlaubt-Liste. Alle sind Build-/Test-/Entwickler-Werkzeuge (Expo-CLI, Metro, Babel, Jest), **keines** steckt in der App (nachgewiesen mit `bundle-license-check`, heute `license-check`). Lizenzen: BlueOak-1.0.0 (glob, minimatch, lru-cache, minipass, path-scurry, sax, graceful-fs, jackspeak, package-json-from-dist), MPL-2.0 (lightningcss), CC-BY-4.0 (caniuse-lite), Unlicense (big-integer, stream-buffers), Python-2.0 (argparse), MIT-0 (@csstools/color-helpers), CC0-1.0 (mdn-data). Ohne Expo/Jest lassen sie sich nicht vermeiden. | Entschieden: Option A. Bei jedem neuen Paket trotzdem auf die Lizenz achten – landet es in der App, schlägt `license-check` an. |
 | O-02 | Duell-Modus (Spieler gegen Spieler oder gegen eine gespeicherte Lösung) ist noch nicht gebaut – war nicht Teil der Aufgabenliste. | Konzept ohne Server: z. B. lokales Duell gegen eine zufällige, regelbasiert erzeugte Lösung. |
 | ~~O-03~~ | iPhone-Test mit Expo Go – **erledigt** am 19.11.2026 durch den Inhaber. Erkenntnis: Expo Go verlangt eine Anmeldung mit demselben (kostenlosen) Expo-Konto in Expo Go **und** am Computer (`npx expo login`). | README ergänzt. |
-| O-04 | Für den Web-Test in Deutschland: Impressum und Datenschutzhinweis nötig. | Texte erstellen (lassen), bevor die Web-Version öffentlich erreichbar ist. |
-| O-05 | Wie wird der Web-Test ausgewertet, ohne Analytics? | z. B. Umfrage-Link oder manuelle Beobachtung; Analytics nur hinter Schalter und nach Datenschutzprüfung. |
+| O-04 | Für eine **öffentliche** Web-Version in Deutschland: Impressum und Datenschutzhinweis nötig. Für den begleiteten Thementest (E-20) **nicht** nötig. | Erst vor Store-Start oder öffentlicher Web-Version erstellen (lassen). |
+| ~~O-05~~ | Auswertung des Thementests ohne Analytics – **gelöst** durch begleiteten Test mit Frage- und Beobachtungsbögen (E-20). | Inhaber führt Test durch, Claude wertet die Bögen aus. |
 | O-06 | `npm audit`: 3 Warnungen (mittel) in `glob` – nur in Jest (Test-Werkzeug), nicht in der App. Behebung würde Jest auf eine alte Version zurücksetzen. | Bei nächstem Jest-/jest-expo-Update erneut prüfen. |
 | O-07 | Premium-Teile: Freischaltung (In-App-Kauf) später hinter Schalter `iap` und Kostenschutz. | Erst nach Themen-Entscheidung. |
 | O-08 | Das Entwicklungswerkzeug (`npx expo start`) selbst spricht mit dem lokalen Netz und ggf. mit Expo-Servern (z. B. Versionsprüfung). Betrifft nur die Entwicklung, nicht die App. | Hinnehmen; Telemetrie ist über `npm start` abgeschaltet. |
@@ -93,3 +94,5 @@ Alle Einträge selbst ausgeführt in der Cloud-Umgebung (Linux, Node 22.23.5, np
 | 18.11.2026 | Gegenprobe: Paket mit CC0-Lizenz vorübergehend als App-Abhängigkeit eingetragen | Prüfung schlägt korrekt an (FEHLER, Exit-Code 1); danach zurückgesetzt |
 | 18.11.2026 | `npm run license-report` (alle 736 installierten Pakete, nur Info) | 717 erlaubt, 19 Werkzeuge mit anderer Lizenz (nicht in der App) |
 | 19.11.2026 | iPhone mit Expo Go (vom **Inhaber** durchgeführt, nach Prüfliste: je Thema Aufträge spielen, Sterne mit Begründung, Sammlung nach Neustart, Deutsch) | laut Inhaber **alles funktioniert**; Hürde: Expo-Anmeldung auf beiden Geräten nötig |
+| 19.11.2026 | Nach Grafik-Upgrade: `npx tsc --noEmit`, `npx jest` (158/158), `npm run license-check` (OK), `npx expo export --platform web` | alle bestanden |
+| 19.11.2026 | Web-Build im Browser: 8 Beispiel-Kompositionen (4 Food, 4 Tattoo, mit/ohne Filter) per Screenshot geprüft; App-Ablauf durchgeklickt | bestanden; 0 externe Netzwerk-Anfragen, 0 Konsolenfehler |
