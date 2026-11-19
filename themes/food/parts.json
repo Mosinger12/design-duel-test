@@ -1,0 +1,1015 @@
+[
+ {
+  "id": "plate_white",
+  "slot": "plate",
+  "tier": "free",
+  "tags": [],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "plateRound",
+   "colors": [
+    "#F7F5F0",
+    "#D9D4CA"
+   ]
+  }
+ },
+ {
+  "id": "plate_slate",
+  "slot": "plate",
+  "tier": "free",
+  "tags": [],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "slate",
+   "colors": [
+    "#3B3E42",
+    "#6A6E73"
+   ]
+  }
+ },
+ {
+  "id": "plate_bowl_blue",
+  "slot": "plate",
+  "tier": "free",
+  "tags": [],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "bowl",
+   "colors": [
+    "#2F5D8A",
+    "#F2EFE8"
+   ]
+  }
+ },
+ {
+  "id": "plate_terracotta",
+  "slot": "plate",
+  "tier": "premium",
+  "tags": [],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "plateRound",
+   "colors": [
+    "#C46A45",
+    "#9E4F30"
+   ]
+  }
+ },
+ {
+  "id": "plate_gold_rim",
+  "slot": "plate",
+  "tier": "premium",
+  "tags": [],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "plateRim",
+   "colors": [
+    "#FAF8F3",
+    "#C9A24A",
+    "#D8D2C4"
+   ]
+  }
+ },
+ {
+  "id": "base_rice",
+  "slot": "base",
+  "tier": "free",
+  "tags": [
+   "allyear"
+  ],
+  "attributes": {
+   "prepMinutes": 15
+  },
+  "visual": {
+   "glyph": "grains",
+   "colors": [
+    "#F4EFE3",
+    "#FFFFFF"
+   ]
+  }
+ },
+ {
+  "id": "base_mash",
+  "slot": "base",
+  "tier": "free",
+  "tags": [
+   "autumn",
+   "winter",
+   "creamy",
+   "dairy"
+  ],
+  "attributes": {
+   "prepMinutes": 25
+  },
+  "visual": {
+   "glyph": "mash",
+   "colors": [
+    "#F1DDA8",
+    "#D9BE7E"
+   ]
+  }
+ },
+ {
+  "id": "base_quinoa",
+  "slot": "base",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "nutty"
+  ],
+  "attributes": {
+   "prepMinutes": 15
+  },
+  "visual": {
+   "glyph": "grains",
+   "colors": [
+    "#E6CFA0",
+    "#B98C5A"
+   ]
+  }
+ },
+ {
+  "id": "base_polenta",
+  "slot": "base",
+  "tier": "free",
+  "tags": [
+   "autumn",
+   "creamy"
+  ],
+  "attributes": {
+   "prepMinutes": 20
+  },
+  "visual": {
+   "glyph": "mash",
+   "colors": [
+    "#F2C94C",
+    "#D4A82C"
+   ]
+  }
+ },
+ {
+  "id": "base_couscous",
+  "slot": "base",
+  "tier": "free",
+  "tags": [
+   "summer",
+   "fresh"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "grains",
+   "colors": [
+    "#EBD5A0",
+    "#F6E7C2"
+   ]
+  }
+ },
+ {
+  "id": "base_greens",
+  "slot": "base",
+  "tier": "free",
+  "tags": [
+   "spring",
+   "summer",
+   "fresh"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "leaves",
+   "colors": [
+    "#6FA84A",
+    "#9CCB6B",
+    "#3F6E2A"
+   ]
+  }
+ },
+ {
+  "id": "base_lentils",
+  "slot": "base",
+  "tier": "free",
+  "tags": [
+   "winter",
+   "earthy"
+  ],
+  "attributes": {
+   "prepMinutes": 20
+  },
+  "visual": {
+   "glyph": "peas",
+   "colors": [
+    "#8B5E3C",
+    "#5E3D26"
+   ]
+  }
+ },
+ {
+  "id": "base_wild_rice",
+  "slot": "base",
+  "tier": "premium",
+  "tags": [
+   "autumn",
+   "nutty"
+  ],
+  "attributes": {
+   "prepMinutes": 40
+  },
+  "visual": {
+   "glyph": "grains",
+   "colors": [
+    "#4A3A2E",
+    "#8C6C50"
+   ]
+  }
+ },
+ {
+  "id": "main_salmon",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "fish",
+   "spring",
+   "summer",
+   "umami"
+  ],
+  "attributes": {
+   "prepMinutes": 15
+  },
+  "visual": {
+   "glyph": "fillet",
+   "colors": [
+    "#F28C6A",
+    "#FFD3C2"
+   ]
+  }
+ },
+ {
+  "id": "main_chicken",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "meat",
+   "allyear",
+   "smoky"
+  ],
+  "attributes": {
+   "prepMinutes": 35
+  },
+  "visual": {
+   "glyph": "fillet",
+   "colors": [
+    "#D9A05B",
+    "#8A5A2B"
+   ]
+  }
+ },
+ {
+  "id": "main_tofu",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "umami"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "cubes",
+   "colors": [
+    "#F3EBD3",
+    "#D8CBA6"
+   ]
+  }
+ },
+ {
+  "id": "main_pumpkin",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "autumn",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 30
+  },
+  "visual": {
+   "glyph": "wedges",
+   "colors": [
+    "#E8892E",
+    "#F6C177"
+   ]
+  }
+ },
+ {
+  "id": "main_asparagus",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "spring",
+   "fresh"
+  ],
+  "attributes": {
+   "prepMinutes": 10
+  },
+  "visual": {
+   "glyph": "spears",
+   "colors": [
+    "#6E9C3B",
+    "#4E7428"
+   ]
+  }
+ },
+ {
+  "id": "main_mushrooms",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "autumn",
+   "earthy",
+   "umami"
+  ],
+  "attributes": {
+   "prepMinutes": 15
+  },
+  "visual": {
+   "glyph": "caps",
+   "colors": [
+    "#9B7653",
+    "#E5D3BC"
+   ]
+  }
+ },
+ {
+  "id": "main_halloumi",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "summer",
+   "smoky",
+   "dairy"
+  ],
+  "attributes": {
+   "prepMinutes": 10
+  },
+  "visual": {
+   "glyph": "fillet",
+   "colors": [
+    "#F2E6C9",
+    "#B88A4E"
+   ]
+  }
+ },
+ {
+  "id": "main_steak",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "meat",
+   "winter",
+   "smoky"
+  ],
+  "attributes": {
+   "prepMinutes": 20
+  },
+  "visual": {
+   "glyph": "fillet",
+   "colors": [
+    "#8E3B2E",
+    "#4A1E17"
+   ]
+  }
+ },
+ {
+  "id": "main_beet_steak",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "winter",
+   "earthy",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 25
+  },
+  "visual": {
+   "glyph": "slices",
+   "colors": [
+    "#8E2C48",
+    "#C2577A"
+   ]
+  }
+ },
+ {
+  "id": "main_zucchini",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "summer",
+   "smoky"
+  ],
+  "attributes": {
+   "prepMinutes": 10
+  },
+  "visual": {
+   "glyph": "slices",
+   "colors": [
+    "#7FA34A",
+    "#E6EFC0"
+   ]
+  }
+ },
+ {
+  "id": "main_scallops",
+  "slot": "main",
+  "tier": "premium",
+  "tags": [
+   "fish",
+   "winter",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 10
+  },
+  "visual": {
+   "glyph": "slices",
+   "colors": [
+    "#F4E4CB",
+    "#D9B98C"
+   ]
+  }
+ },
+ {
+  "id": "main_garden_patty",
+  "slot": "main",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "herb"
+  ],
+  "attributes": {
+   "prepMinutes": 15
+  },
+  "visual": {
+   "glyph": "patty",
+   "colors": [
+    "#7A8F3E",
+    "#C9D88A"
+   ]
+  },
+  "sponsor": "Demo Partner (fictional)",
+  "label": "Partner pick",
+  "validFrom": "2026-01-01",
+  "validTo": "2027-12-31",
+  "region": [
+   "DE",
+   "AT",
+   "CH"
+  ],
+  "minAge": 18
+ },
+ {
+  "id": "side_carrots",
+  "slot": "side",
+  "tier": "free",
+  "tags": [
+   "autumn",
+   "winter",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 20
+  },
+  "visual": {
+   "glyph": "sticks",
+   "colors": [
+    "#E8742A",
+    "#5E9B3A"
+   ]
+  }
+ },
+ {
+  "id": "side_tomatoes",
+  "slot": "side",
+  "tier": "free",
+  "tags": [
+   "summer",
+   "fresh"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "balls",
+   "colors": [
+    "#D8352A",
+    "#FFB4A8",
+    "#F2A33A"
+   ]
+  }
+ },
+ {
+  "id": "side_peas",
+  "slot": "side",
+  "tier": "free",
+  "tags": [
+   "spring",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 10
+  },
+  "visual": {
+   "glyph": "peas",
+   "colors": [
+    "#7DBB45",
+    "#4F8A2A"
+   ]
+  }
+ },
+ {
+  "id": "side_red_cabbage",
+  "slot": "side",
+  "tier": "free",
+  "tags": [
+   "winter",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 20
+  },
+  "visual": {
+   "glyph": "leaves",
+   "colors": [
+    "#6E2A6E",
+    "#9A4C9A",
+    "#4A1B4A"
+   ]
+  }
+ },
+ {
+  "id": "side_green_beans",
+  "slot": "side",
+  "tier": "free",
+  "tags": [
+   "summer",
+   "fresh"
+  ],
+  "attributes": {
+   "prepMinutes": 10
+  },
+  "visual": {
+   "glyph": "sticks",
+   "colors": [
+    "#4F8F3A",
+    "#3A6B2A"
+   ]
+  }
+ },
+ {
+  "id": "side_beet_slices",
+  "slot": "side",
+  "tier": "free",
+  "tags": [
+   "autumn",
+   "earthy"
+  ],
+  "attributes": {
+   "prepMinutes": 30
+  },
+  "visual": {
+   "glyph": "slices",
+   "colors": [
+    "#8E2C48",
+    "#C2577A"
+   ]
+  }
+ },
+ {
+  "id": "side_corn",
+  "slot": "side",
+  "tier": "free",
+  "tags": [
+   "summer",
+   "smoky",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 15
+  },
+  "visual": {
+   "glyph": "peas",
+   "colors": [
+    "#F2C230",
+    "#D69E1A"
+   ]
+  }
+ },
+ {
+  "id": "side_figs",
+  "slot": "side",
+  "tier": "premium",
+  "tags": [
+   "autumn",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "slices",
+   "colors": [
+    "#6B2D5C",
+    "#E5A1A9"
+   ]
+  }
+ },
+ {
+  "id": "side_radish",
+  "slot": "side",
+  "tier": "free",
+  "tags": [
+   "spring",
+   "fresh",
+   "spicy"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "slices",
+   "colors": [
+    "#E8E0E4",
+    "#D6336C"
+   ]
+  }
+ },
+ {
+  "id": "sauce_lemon_butter",
+  "slot": "sauce",
+  "tier": "free",
+  "tags": [
+   "spring",
+   "citrus",
+   "dairy"
+  ],
+  "attributes": {
+   "prepMinutes": 10
+  },
+  "visual": {
+   "glyph": "pool",
+   "colors": [
+    "#F4D97A"
+   ]
+  }
+ },
+ {
+  "id": "sauce_herb_oil",
+  "slot": "sauce",
+  "tier": "free",
+  "tags": [
+   "summer",
+   "herb"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "drizzle",
+   "colors": [
+    "#5E9B3A"
+   ]
+  }
+ },
+ {
+  "id": "sauce_chili_oil",
+  "slot": "sauce",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "spicy"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "dots",
+   "colors": [
+    "#C0392B"
+   ]
+  }
+ },
+ {
+  "id": "sauce_yogurt",
+  "slot": "sauce",
+  "tier": "free",
+  "tags": [
+   "summer",
+   "creamy",
+   "dairy"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "pool",
+   "colors": [
+    "#F7F4EC"
+   ]
+  }
+ },
+ {
+  "id": "sauce_tahini",
+  "slot": "sauce",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "nutty",
+   "creamy"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "drizzle",
+   "colors": [
+    "#D9B98C"
+   ]
+  }
+ },
+ {
+  "id": "sauce_jus",
+  "slot": "sauce",
+  "tier": "free",
+  "tags": [
+   "winter",
+   "umami",
+   "meat"
+  ],
+  "attributes": {
+   "prepMinutes": 20
+  },
+  "visual": {
+   "glyph": "pool",
+   "colors": [
+    "#5A2E1C"
+   ]
+  }
+ },
+ {
+  "id": "sauce_maple",
+  "slot": "sauce",
+  "tier": "free",
+  "tags": [
+   "winter",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "drizzle",
+   "colors": [
+    "#B5651D"
+   ]
+  }
+ },
+ {
+  "id": "sauce_mushroom_cream",
+  "slot": "sauce",
+  "tier": "free",
+  "tags": [
+   "autumn",
+   "earthy",
+   "creamy",
+   "dairy"
+  ],
+  "attributes": {
+   "prepMinutes": 15
+  },
+  "visual": {
+   "glyph": "pool",
+   "colors": [
+    "#C9AE8C"
+   ]
+  }
+ },
+ {
+  "id": "sauce_truffle",
+  "slot": "sauce",
+  "tier": "premium",
+  "tags": [
+   "autumn",
+   "earthy"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "dots",
+   "colors": [
+    "#3B2A20"
+   ]
+  }
+ },
+ {
+  "id": "garnish_parsley",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "herb"
+  ],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "herbs",
+   "colors": [
+    "#3F8A2E"
+   ]
+  }
+ },
+ {
+  "id": "garnish_lemon_zest",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "citrus"
+  ],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "zest",
+   "colors": [
+    "#F2D13A"
+   ]
+  }
+ },
+ {
+  "id": "garnish_seeds",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "nutty"
+  ],
+  "attributes": {
+   "prepMinutes": 2
+  },
+  "visual": {
+   "glyph": "sprinkle",
+   "colors": [
+    "#E9D8A6",
+    "#3B3B3B"
+   ]
+  }
+ },
+ {
+  "id": "garnish_pomegranate",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "autumn",
+   "winter",
+   "sweet"
+  ],
+  "attributes": {
+   "prepMinutes": 2
+  },
+  "visual": {
+   "glyph": "sprinkle",
+   "colors": [
+    "#B3122E",
+    "#E0405A"
+   ]
+  }
+ },
+ {
+  "id": "garnish_chili_flakes",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "spicy"
+  ],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "sprinkle",
+   "colors": [
+    "#D23A1E",
+    "#F08A2C"
+   ]
+  }
+ },
+ {
+  "id": "garnish_microgreens",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "spring",
+   "fresh"
+  ],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "herbs",
+   "colors": [
+    "#8CC63F"
+   ]
+  }
+ },
+ {
+  "id": "garnish_crispy_onions",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "allyear",
+   "smoky"
+  ],
+  "attributes": {
+   "prepMinutes": 5
+  },
+  "visual": {
+   "glyph": "crispy",
+   "colors": [
+    "#B8742E"
+   ]
+  }
+ },
+ {
+  "id": "garnish_flowers",
+  "slot": "garnish",
+  "tier": "premium",
+  "tags": [
+   "spring",
+   "fresh"
+  ],
+  "attributes": {
+   "prepMinutes": 0
+  },
+  "visual": {
+   "glyph": "flowers",
+   "colors": [
+    "#E86FA8",
+    "#F7D046",
+    "#9B7BD8"
+   ]
+  }
+ },
+ {
+  "id": "garnish_hazelnuts",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "autumn",
+   "nutty"
+  ],
+  "attributes": {
+   "prepMinutes": 3
+  },
+  "visual": {
+   "glyph": "sprinkle",
+   "colors": [
+    "#A06A3A",
+    "#D9A86C"
+   ]
+  }
+ },
+ {
+  "id": "garnish_horseradish",
+  "slot": "garnish",
+  "tier": "free",
+  "tags": [
+   "winter",
+   "spicy"
+  ],
+  "attributes": {
+   "prepMinutes": 1
+  },
+  "visual": {
+   "glyph": "zest",
+   "colors": [
+    "#F4F1E6"
+   ]
+  }
+ }
+]

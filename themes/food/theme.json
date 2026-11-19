@@ -1,0 +1,152 @@
+{
+  "id": "food",
+  "canvas": {
+    "width": 300,
+    "height": 300
+  },
+  "backdrop": {
+    "base": [
+      {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "width": 300,
+        "height": 300,
+        "fill": "#B98A5E"
+      },
+      {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "width": 300,
+        "height": 60,
+        "fill": "#A87B52",
+        "opacity": 0.6
+      },
+      {
+        "type": "rect",
+        "x": 0,
+        "y": 120,
+        "width": 300,
+        "height": 50,
+        "fill": "#C49669",
+        "opacity": 0.6
+      },
+      {
+        "type": "rect",
+        "x": 0,
+        "y": 240,
+        "width": 300,
+        "height": 60,
+        "fill": "#A87B52",
+        "opacity": 0.5
+      },
+      {
+        "type": "line",
+        "x1": 0,
+        "y1": 60,
+        "x2": 300,
+        "y2": 60,
+        "stroke": "#8C6340",
+        "strokeWidth": 1,
+        "opacity": 0.5
+      },
+      {
+        "type": "line",
+        "x1": 0,
+        "y1": 170,
+        "x2": 300,
+        "y2": 170,
+        "stroke": "#8C6340",
+        "strokeWidth": 1,
+        "opacity": 0.5
+      },
+      {
+        "type": "line",
+        "x1": 0,
+        "y1": 240,
+        "x2": 300,
+        "y2": 240,
+        "stroke": "#8C6340",
+        "strokeWidth": 1,
+        "opacity": 0.5
+      },
+      {
+        "type": "rect",
+        "x": 196,
+        "y": 8,
+        "width": 96,
+        "height": 30,
+        "rx": 4,
+        "fill": "#E9E2D6",
+        "opacity": 0.9,
+        "transform": "rotate(12 244 23)"
+      }
+    ]
+  },
+  "slots": [
+    {
+      "id": "plate",
+      "required": true,
+      "transform": {
+        "x": 150,
+        "y": 152,
+        "scale": 2.8
+      }
+    },
+    {
+      "id": "sauce",
+      "required": false,
+      "transform": {
+        "x": 150,
+        "y": 156,
+        "scale": 2.5
+      }
+    },
+    {
+      "id": "base",
+      "required": true,
+      "transform": {
+        "x": 138,
+        "y": 148,
+        "scale": 2.2
+      }
+    },
+    {
+      "id": "main",
+      "required": true,
+      "transform": {
+        "x": 132,
+        "y": 138,
+        "scale": 2.15
+      }
+    },
+    {
+      "id": "side",
+      "required": true,
+      "transform": {
+        "x": 206,
+        "y": 180,
+        "scale": 1.35
+      }
+    },
+    {
+      "id": "garnish",
+      "required": false,
+      "transform": {
+        "x": 148,
+        "y": 148,
+        "scale": 2.4
+      }
+    }
+  ],
+  "filters": [
+    "none",
+    "golden",
+    "silver"
+  ],
+  "contextFields": [
+    "season",
+    "diet"
+  ]
+}

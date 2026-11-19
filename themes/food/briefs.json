@@ -1,0 +1,298 @@
+[
+ {
+  "id": "autumn_comfort",
+  "context": {
+   "season": "autumn",
+   "diet": "vegetarian"
+  },
+  "criteria": [
+   {
+    "rule": "season",
+    "params": {
+     "tags": [
+      "autumn"
+     ]
+    }
+   },
+   {
+    "rule": "vegetarian"
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 60
+    }
+   },
+   {
+    "rule": "pairs"
+   }
+  ]
+ },
+ {
+  "id": "spring_light",
+  "context": {
+   "season": "spring"
+  },
+  "criteria": [
+   {
+    "rule": "season",
+    "params": {
+     "tags": [
+      "spring"
+     ]
+    }
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 30
+    }
+   },
+   {
+    "rule": "pairs"
+   }
+  ]
+ },
+ {
+  "id": "summer_vegan",
+  "context": {
+   "season": "summer",
+   "diet": "vegan"
+  },
+  "criteria": [
+   {
+    "rule": "season",
+    "params": {
+     "tags": [
+      "summer"
+     ]
+    }
+   },
+   {
+    "rule": "vegan"
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 30
+    }
+   },
+   {
+    "rule": "pairs"
+   }
+  ]
+ },
+ {
+  "id": "winter_feast",
+  "context": {
+   "season": "winter"
+  },
+  "criteria": [
+   {
+    "rule": "season",
+    "params": {
+     "tags": [
+      "winter"
+     ]
+    }
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 75
+    }
+   },
+   {
+    "rule": "pairs",
+    "params": {
+     "min": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "quick_lunch",
+  "context": {
+   "diet": "vegetarian"
+  },
+  "criteria": [
+   {
+    "rule": "vegetarian"
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 20
+    }
+   },
+   {
+    "rule": "pairs"
+   }
+  ]
+ },
+ {
+  "id": "date_night",
+  "context": {
+   "season": "autumn"
+  },
+  "criteria": [
+   {
+    "rule": "season",
+    "params": {
+     "tags": [
+      "autumn"
+     ]
+    }
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 60
+    }
+   },
+   {
+    "rule": "pairs",
+    "params": {
+     "min": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "garden_party",
+  "context": {
+   "season": "summer",
+   "diet": "vegetarian"
+  },
+  "criteria": [
+   {
+    "rule": "season",
+    "params": {
+     "tags": [
+      "summer"
+     ]
+    }
+   },
+   {
+    "rule": "vegetarian"
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 25
+    }
+   },
+   {
+    "rule": "pairs"
+   }
+  ]
+ },
+ {
+  "id": "coastal_spring",
+  "context": {
+   "season": "spring",
+   "diet": "pescatarian"
+  },
+  "criteria": [
+   {
+    "rule": "season",
+    "params": {
+     "tags": [
+      "spring"
+     ]
+    }
+   },
+   {
+    "rule": "pescatarian"
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 40
+    }
+   },
+   {
+    "rule": "pairs"
+   }
+  ]
+ },
+ {
+  "id": "cozy_vegan_winter",
+  "context": {
+   "season": "winter",
+   "diet": "vegan"
+  },
+  "criteria": [
+   {
+    "rule": "season",
+    "params": {
+     "tags": [
+      "winter"
+     ]
+    }
+   },
+   {
+    "rule": "vegan"
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 70
+    }
+   },
+   {
+    "rule": "pairs"
+   }
+  ]
+ },
+ {
+  "id": "student_budget",
+  "context": {
+   "diet": "vegan"
+  },
+  "criteria": [
+   {
+    "rule": "vegan"
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 15
+    }
+   },
+   {
+    "rule": "pairs"
+   }
+  ]
+ },
+ {
+  "id": "partner_showcase",
+  "context": {
+   "season": "summer"
+  },
+  "criteria": [
+   {
+    "rule": "season",
+    "params": {
+     "tags": [
+      "summer"
+     ]
+    }
+   },
+   {
+    "rule": "time",
+    "params": {
+     "max": 30
+    }
+   },
+   {
+    "rule": "pairs"
+   }
+  ],
+  "sponsor": "Demo Partner (fictional)",
+  "label": "Partner challenge",
+  "validFrom": "2026-01-01",
+  "validTo": "2027-12-31",
+  "minAge": 18
+ }
+]

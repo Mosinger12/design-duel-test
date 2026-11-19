@@ -1,0 +1,165 @@
+{
+  "_note": "Sperrliste für Hass- und Extremismus-Symbole (u. a. nach § 86a StGB und gängigen Symbol-Datenbanken gegen Hass). Ein Test prüft, dass kein Teil (ID, Tags, Form, Name EN/DE) einen dieser Begriffe enthält. Begriffe werden als ganze Wörter/Phrasen verglichen. Die Liste ist nicht abschließend; neue Motive werden zusätzlich manuell geprüft (RECHTE.md).",
+  "symbols": [
+    {
+      "id": "swastika",
+      "terms": [
+        "swastika",
+        "hakenkreuz",
+        "hooked cross",
+        "sauwastika",
+        "three armed swastika",
+        "dreiarmiges hakenkreuz"
+      ]
+    },
+    {
+      "id": "sig_runes",
+      "terms": [
+        "sig rune",
+        "sig runes",
+        "sigrune",
+        "siegrune",
+        "ss rune",
+        "ss runes",
+        "schutzstaffel"
+      ]
+    },
+    {
+      "id": "black_sun",
+      "terms": [
+        "black sun",
+        "schwarze sonne",
+        "sonnenrad"
+      ]
+    },
+    {
+      "id": "wolfsangel",
+      "terms": [
+        "wolfsangel",
+        "wolf hook",
+        "wolfs hook",
+        "wolf s hook"
+      ]
+    },
+    {
+      "id": "totenkopf",
+      "terms": [
+        "totenkopf",
+        "ss skull",
+        "death s head"
+      ]
+    },
+    {
+      "id": "celtic_cross_wp",
+      "terms": [
+        "celtic cross",
+        "keltenkreuz",
+        "white power"
+      ]
+    },
+    {
+      "id": "odal_rune",
+      "terms": [
+        "odal",
+        "odal rune",
+        "odalrune",
+        "othala"
+      ]
+    },
+    {
+      "id": "life_death_rune",
+      "terms": [
+        "lebensrune",
+        "todesrune",
+        "life rune",
+        "death rune"
+      ]
+    },
+    {
+      "id": "nazi_eagle",
+      "terms": [
+        "reichsadler",
+        "parteiadler",
+        "nazi eagle",
+        "nsdap",
+        "nazi",
+        "hitler"
+      ]
+    },
+    {
+      "id": "reich_war_flag",
+      "terms": [
+        "reichskriegsflagge",
+        "reich war flag",
+        "reichsflagge"
+      ]
+    },
+    {
+      "id": "iron_cross_extremist",
+      "terms": [
+        "iron cross",
+        "eisernes kreuz"
+      ]
+    },
+    {
+      "id": "kkk",
+      "terms": [
+        "kkk",
+        "ku klux klan",
+        "blood drop cross"
+      ]
+    },
+    {
+      "id": "numeric_codes",
+      "terms": [
+        "88",
+        "18",
+        "14",
+        "1488",
+        "14 words",
+        "hh",
+        "heil hitler",
+        "sieg heil"
+      ]
+    },
+    {
+      "id": "neo_nazi_groups",
+      "terms": [
+        "blood and honour",
+        "combat 18",
+        "crossed hammers",
+        "hammerskins"
+      ]
+    },
+    {
+      "id": "confederate_flag",
+      "terms": [
+        "confederate flag",
+        "rebel flag",
+        "konföderiertenflagge"
+      ]
+    },
+    {
+      "id": "jihadist_flag",
+      "terms": [
+        "black standard",
+        "isis",
+        "daesh"
+      ]
+    },
+    {
+      "id": "valknut",
+      "terms": [
+        "valknut"
+      ]
+    },
+    {
+      "id": "lynching",
+      "terms": [
+        "noose",
+        "lynch",
+        "galgenstrick"
+      ]
+    }
+  ]
+}
