@@ -52,6 +52,12 @@ Beenden: im Terminal `Ctrl + C` drücken.
 3. Mit der normalen **Kamera-App** des iPhones auf den QR-Code im Terminal zeigen und auf den eingeblendeten Hinweis tippen. Expo Go öffnet die App.
 4. Beim ersten Start fragt die App nach dem Alter (18+). Danach siehst du den Startbildschirm.
 
+**Anmeldung nötig:** Expo Go verlangt, dass du in Expo Go **und** am Computer mit demselben kostenlosen Expo-Konto angemeldet bist. Am Computer einmalig (vor `npx expo start`):
+```
+npx expo login
+```
+Benutzername und Passwort eingeben (beim Passwort erscheinen keine Zeichen – das ist normal). Passwort vergessen? Auf <https://expo.dev> „Forgot password?“ nutzen.
+
 Wenn Expo Go meldet, die Projekt-Version (SDK 58) passe nicht: Expo Go im App Store aktualisieren.
 Wenn sich nichts öffnet: prüfen, ob beide Geräte im selben WLAN sind, und `npx expo start` neu starten.
 

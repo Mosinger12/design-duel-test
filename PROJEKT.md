@@ -55,8 +55,8 @@ Auf dem iPhone noch **nicht** getestet (kein Gerät in dieser Umgebung).
 ## Annahmen (mit Status)
 | Nr. | Annahme | Status |
 |---|---|---|
-| A-01 | Expo Go aus dem App Store unterstützt SDK 58. | **ungeprüft** – beim iPhone-Test bestätigen |
-| A-02 | `react-native-svg` und AsyncStorage sind in Expo Go enthalten (keine eigene App-Version nötig). | laut Expo-Paketliste ja; **auf Gerät ungeprüft** |
+| A-01 | Expo Go aus dem App Store unterstützt SDK 58. | **bestätigt** (iPhone-Test des Inhabers, 19.11.2026) |
+| A-02 | `react-native-svg` und AsyncStorage sind in Expo Go enthalten (keine eigene App-Version nötig). | **bestätigt** (iPhone-Test des Inhabers, 19.11.2026) |
 | A-03 | Die Kennzeichnung „Sponsored · Anzeige“ reicht in Deutschland aus. | **ungeprüft** – vor Einschalten von Sponsoring rechtlich prüfen lassen |
 | A-04 | Eine Selbstauskunft „18+“ genügt für Prototyp und Web-Test. | **ungeprüft** – für Store-Veröffentlichung Altersfreigabe/Jugendschutz klären |
 | A-05 | Spieler verstehen die Regeln aus Auftragstext + Begründungen. | **offen** – im Web-Test beobachten |
@@ -69,13 +69,13 @@ Auf dem iPhone noch **nicht** getestet (kein Gerät in dieser Umgebung).
 |---|---|---|
 | ~~O-01~~ | **Erledigt durch Entscheidung A (E-04).** Ursprünglich: `npm run license-check` schlug fehl: 19 Pakete mit Lizenz außerhalb der Erlaubt-Liste. Alle sind Build-/Test-/Entwickler-Werkzeuge (Expo-CLI, Metro, Babel, Jest), **keines** steckt in der App (nachgewiesen mit `bundle-license-check`, heute `license-check`). Lizenzen: BlueOak-1.0.0 (glob, minimatch, lru-cache, minipass, path-scurry, sax, graceful-fs, jackspeak, package-json-from-dist), MPL-2.0 (lightningcss), CC-BY-4.0 (caniuse-lite), Unlicense (big-integer, stream-buffers), Python-2.0 (argparse), MIT-0 (@csstools/color-helpers), CC0-1.0 (mdn-data). Ohne Expo/Jest lassen sie sich nicht vermeiden. | Entschieden: Option A. Bei jedem neuen Paket trotzdem auf die Lizenz achten – landet es in der App, schlägt `license-check` an. |
 | O-02 | Duell-Modus (Spieler gegen Spieler oder gegen eine gespeicherte Lösung) ist noch nicht gebaut – war nicht Teil der Aufgabenliste. | Konzept ohne Server: z. B. lokales Duell gegen eine zufällige, regelbasiert erzeugte Lösung. |
-| O-03 | iPhone-Test mit Expo Go steht aus. | Siehe Prüfliste im README / Abschlussbericht. |
+| ~~O-03~~ | iPhone-Test mit Expo Go – **erledigt** am 19.11.2026 durch den Inhaber. Erkenntnis: Expo Go verlangt eine Anmeldung mit demselben (kostenlosen) Expo-Konto in Expo Go **und** am Computer (`npx expo login`). | README ergänzt. |
 | O-04 | Für den Web-Test in Deutschland: Impressum und Datenschutzhinweis nötig. | Texte erstellen (lassen), bevor die Web-Version öffentlich erreichbar ist. |
 | O-05 | Wie wird der Web-Test ausgewertet, ohne Analytics? | z. B. Umfrage-Link oder manuelle Beobachtung; Analytics nur hinter Schalter und nach Datenschutzprüfung. |
 | O-06 | `npm audit`: 3 Warnungen (mittel) in `glob` – nur in Jest (Test-Werkzeug), nicht in der App. Behebung würde Jest auf eine alte Version zurücksetzen. | Bei nächstem Jest-/jest-expo-Update erneut prüfen. |
 | O-07 | Premium-Teile: Freischaltung (In-App-Kauf) später hinter Schalter `iap` und Kostenschutz. | Erst nach Themen-Entscheidung. |
 | O-08 | Das Entwicklungswerkzeug (`npx expo start`) selbst spricht mit dem lokalen Netz und ggf. mit Expo-Servern (z. B. Versionsprüfung). Betrifft nur die Entwicklung, nicht die App. | Hinnehmen; Telemetrie ist über `npm start` abgeschaltet. |
-| O-09 | Bildqualität: Platzhalter-Formen sind bewusst einfach. | Nach Themen-Entscheidung eigene Grafiken (mit Register-Eintrag) planen. |
+| O-09 | Bildqualität: Platzhalter-Formen sind bewusst einfach. Für den Launch echte Grafiken nötig. Optionen: (1) KI-Bilder **einmalig in der Entwicklung** erzeugen (keine KI zur Laufzeit), (2) Illustrator beauftragen, (3) KI-Entwurf + menschliche Überarbeitung, (4) verbesserte Code-Grafiken. Zu beachten: rein KI-erzeugte Bilder sind in DE/EU meist nicht urheberrechtlich geschützt (Konkurrenz darf sie kopieren); Nutzungsbedingungen des KI-Werkzeugs; keine Künstler-/Markennamen in Prompts; Sichtprüfung auf Ähnlichkeit; jede Datei mit Prompt ins Register. Technik: Engine braucht dafür einen neuen Ebenen-Typ „Bild“ (kleine Änderung). | Nach Themen-Entscheidung: Bildstil festlegen, 1–2 Aufträge als Muster umsetzen. |
 
 ## Prüfprotokoll
 Alle Einträge selbst ausgeführt in der Cloud-Umgebung (Linux, Node 22.23.5, npm 10.9.9).
@@ -92,4 +92,4 @@ Alle Einträge selbst ausgeführt in der Cloud-Umgebung (Linux, Node 22.23.5, np
 | 18.11.2026 | Nach Entscheidung A: `npm run license-check` (neu: App-Abhängigkeiten + Bundles web/ios) | **bestanden**: 39 Pakete in der App, alle MIT / ISC / BSD-3-Clause, Exit-Code 0 |
 | 18.11.2026 | Gegenprobe: Paket mit CC0-Lizenz vorübergehend als App-Abhängigkeit eingetragen | Prüfung schlägt korrekt an (FEHLER, Exit-Code 1); danach zurückgesetzt |
 | 18.11.2026 | `npm run license-report` (alle 736 installierten Pakete, nur Info) | 717 erlaubt, 19 Werkzeuge mit anderer Lizenz (nicht in der App) |
-| – | iPhone mit Expo Go | **nicht ausgeführt** (kein Gerät verfügbar) |
+| 19.11.2026 | iPhone mit Expo Go (vom **Inhaber** durchgeführt, nach Prüfliste: je Thema Aufträge spielen, Sterne mit Begründung, Sammlung nach Neustart, Deutsch) | laut Inhaber **alles funktioniert**; Hürde: Expo-Anmeldung auf beiden Geräten nötig |
