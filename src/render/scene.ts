@@ -7,10 +7,12 @@ import { resolveParts } from '../engine/scoring';
 import { drawGlyph } from './glyphs';
 import { getFilter, type FilterSpec } from './filters';
 import { hashString, rng } from './random';
+import { resolvePaint } from './gradients';
 
 export interface SceneLayer {
   key: string;
   transform?: string;
+  opacity?: number;
   prims: Primitive[];
 }
 
@@ -23,8 +25,7 @@ export interface SceneData {
 }
 
 function resolveColor(c: string | undefined, vars: Record<string, string>): string | undefined {
-  if (!c || c[0] !== '$') return c;
-  return vars[c.slice(1)] ?? '#888888';
+  return resolvePaint(c, (v) => vars[v.slice(1)] ?? '#888888');
 }
 
 function applyPaint(p: Primitive, vars: Record<string, string>, mods: StyleMods | null): Primitive {
@@ -75,7 +76,7 @@ export function buildScene(theme: Theme, comp: Composition): SceneData {
   let styledScale = 1;
   if (m.scaleBy) {
     const total = m.scaleBy.slots.reduce((s, id) => s + (parts[id]?.attributes?.[m.scaleBy!.attribute] ?? 0), 0);
-    styledScale = Math.max(m.scaleBy.min, total * m.scaleBy.unit);
+    styledScale = Math.max(m.scaleBy.min, (m.scaleBy.base ?? 0) + total * m.scaleBy.unit);
   }
 
   for (const slot of m.slots) {
@@ -83,12 +84,21 @@ export function buildScene(theme: Theme, comp: Composition): SceneData {
     if (!p || !p.visual.glyph) continue;
     const seed = p.visual.seed ?? hashString(p.id);
     const colors = (p.visual.colors ?? ['#888888']).map((c) => resolveColor(c, vars) ?? '#888888');
-    const prims = drawGlyph(p.visual.glyph, colors, rng(seed)).map((pr) => applyPaint(pr, vars, slot.styled ? mods : null));
+    let prims = drawGlyph(p.visual.glyph, colors, rng(seed)).map((pr) => applyPaint(pr, vars, slot.styled ? mods : null));
+    const fx = slot.styled ? m.styledEffect : undefined;
+    if (fx?.bleed) {
+      // weicher Rand ("Tinte in der Haut"): breitere, sehr blasse Kopie jeder Kontur darunter
+      const halo = prims
+        .filter((pr) => pr.role && pr.stroke && pr.stroke !== 'none')
+        .map((pr) => ({ ...pr, fill: 'none', strokeWidth: (pr.strokeWidth ?? 2) * fx.bleed!, opacity: 0.14, strokeDasharray: undefined }));
+      prims = [...halo, ...prims];
+    }
     const t = slot.transform;
     const scale = t.scale * (slot.styled ? styledScale : 1);
     layers.push({
       key: `${slot.id}:${p.id}`,
       transform: `translate(${t.x} ${t.y}) scale(${Math.round(scale * 1000) / 1000})${t.rotate ? ` rotate(${t.rotate})` : ''}`,
+      opacity: fx?.opacity,
       prims,
     });
   }

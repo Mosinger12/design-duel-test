@@ -5,22 +5,26 @@ import type { Part } from '../../engine/types';
 import { drawGlyph } from '../../render/glyphs';
 import { hashString, rng } from '../../render/random';
 import { Prim } from '../../render/Scene';
+import { resolvePaint, withGradients } from '../../render/gradients';
 import type { TFunction } from '../../i18n';
 import { colors } from '../theme';
 import { Badges } from './Badges';
 
-function resolve(c: string, vars: Record<string, string>) {
-  return c.startsWith('$') ? vars[c.slice(1)] ?? '#888' : c;
+function resolve<T extends string | undefined>(c: T, vars: Record<string, string>): T {
+  return resolvePaint(c, (x) => vars[x.slice(1)] ?? '#888') as T;
 }
 
 /** Kleine Vorschau eines Teils (nur im Code erzeugte Formen). */
 export function PartPreview({ part, vars, size = 48 }: { part: Part; vars: Record<string, string>; size?: number }) {
   const v = part.visual;
   if (v.glyph) {
-    const prims = drawGlyph(v.glyph, (v.colors ?? ['#888']).map((c) => resolve(c, vars)), rng(v.seed ?? hashString(part.id)));
+    const raw = drawGlyph(v.glyph, (v.colors ?? ['#888']).map((c) => resolve(c, vars)), rng(v.seed ?? hashString(part.id)))
+      .map((p) => ({ ...p, fill: resolve(p.fill, vars), stroke: resolve(p.stroke, vars) }));
+    const g = withGradients(raw, 'g');
     return (
       <Svg width={size} height={size} viewBox="-55 -55 110 110">
-        <G>{prims.map((p, i) => <Prim key={i} p={{ ...p, fill: p.fill ? resolve(p.fill, vars) : p.fill, stroke: p.stroke ? resolve(p.stroke, vars) : p.stroke }} />)}</G>
+        {g.defs}
+        <G>{g.prims.map((p, i) => <Prim key={i} p={p} />)}</G>
       </Svg>
     );
   }
